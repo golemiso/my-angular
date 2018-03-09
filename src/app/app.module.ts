@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgDragDropModule } from 'ng-drag-drop';
 
 
 import { AppComponent } from './app.component';
@@ -11,6 +12,9 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PlayerComponent } from './player/player.component';
+import { PlayerService } from './player/player.service';
+import { MaterialModule } from './common/material/material.module';
 
 
 @NgModule({
@@ -19,16 +23,20 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule,
+    NgDragDropModule.forRoot()
   ],
   providers: [
     HeroService,
-    MessageService
+    MessageService,
+    PlayerService
   ],
   bootstrap: [AppComponent]
 })
