@@ -1,5 +1,5 @@
 <mat-list droppable>
-  <mat-list-item draggable *ngFor="let player of players">
+  <mat-list-item draggable *ngFor="let player of players" [dragData]="player">
     <span class="badge">{{player.id}}</span> {{player.name}}
   </mat-list-item>
 </mat-list>

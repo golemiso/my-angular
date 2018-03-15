@@ -15,6 +15,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PlayerComponent } from './player/player.component';
 import { PlayerService } from './player/player.service';
 import { MaterialModule } from './common/material/material.module';
+import { TeamComponent } from './team/team.component';
+import { GroupingComponent } from './grouping/grouping.component';
+import { GroupingService } from './grouping/grouping.service';
 
 
 @NgModule({
@@ -24,7 +27,9 @@ import { MaterialModule } from './common/material/material.module';
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    PlayerComponent
+    PlayerComponent,
+    TeamComponent,
+    GroupingComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,8 @@ import { MaterialModule } from './common/material/material.module';
   providers: [
     HeroService,
     MessageService,
-    PlayerService
+    PlayerService,
+    GroupingService
   ],
   bootstrap: [AppComponent]
 })
