@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { PlayerService } from './player.service';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Player } from './player';
 
 @Component({
@@ -7,17 +6,13 @@ import { Player } from './player';
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.css']
 })
-export class PlayerComponent implements OnInit {
-  players: Player[];
+export class PlayerComponent {
+  @Input() player: Player;
+  @Output() deleteRequest = new EventEmitter<Player>();
 
-  constructor(private service: PlayerService) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.getPlayers();
-  }
-
-  getPlayers() {
-    this.service.getPlayers()
-      .subscribe(players => this.players = players);
+  delete() {
+    this.deleteRequest.emit(this.player);
   }
 }

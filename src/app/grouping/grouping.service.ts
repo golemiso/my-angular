@@ -55,6 +55,10 @@ export const GROUPING: Grouping = {
         {
           id: '7',
           name: 'Name 7'
+        },
+        {
+          id: '8',
+          name: 'Name 8'
         }
       ]
     },

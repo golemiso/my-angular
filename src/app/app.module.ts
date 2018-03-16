@@ -18,6 +18,7 @@ import { MaterialModule } from './common/material/material.module';
 import { TeamComponent } from './team/team.component';
 import { GroupingComponent } from './grouping/grouping.component';
 import { GroupingService } from './grouping/grouping.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { GroupingService } from './grouping/grouping.service';
     FormsModule,
     AppRoutingModule,
     MaterialModule,
-    NgDragDropModule.forRoot()
+    NgDragDropModule.forRoot(),
+    FlexLayoutModule
   ],
   providers: [
     HeroService,

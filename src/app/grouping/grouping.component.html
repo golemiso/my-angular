@@ -1,9 +1,3 @@
-<mat-card>
-  <mat-card *ngFor="let team of grouping.teams" droppable>
-    <mat-list>
-      <mat-list-item draggable *ngFor="let player of team.players" [dragData]="player">
-        <span class="badge">{{player.id}}</span> {{player.name}}
-      </mat-list-item>
-    </mat-list>
-  </mat-card>
-</mat-card>
+<div fxLayout="row wrap" fxLayoutAlign="start" style="padding: 10px;">
+  <app-team *ngFor="let team of grouping.teams" [team]="team"></app-team>
+</div>
