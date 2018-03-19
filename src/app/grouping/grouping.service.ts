@@ -21,19 +21,19 @@ export const GROUPING: Grouping = {
       players: [
         {
           id: '0',
-          name: 'Name 0'
+          name: 'からてババアきゅぴ'
         },
         {
           id: '1',
-          name: 'Name 1'
+          name: 'ごとう　れいか'
         },
         {
           id: '2',
-          name: 'Name 2'
+          name: 'かに'
         },
         {
           id: '3',
-          name: 'Name 3'
+          name: 'はんざわ　せれな'
         }
       ]
     },

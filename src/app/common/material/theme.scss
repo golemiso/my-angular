@@ -10,10 +10,10 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://www.google.com/design/spec/style/color.html
 $app-primary: mat-palette($mat-deep-orange);
-$app-accent:  mat-palette($mat-pink, A200, A100, A400);
+$app-accent: mat-palette($mat-pink, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$app-warn:    mat-palette($mat-red);
+$app-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
@@ -22,23 +22,3 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($app-theme);
-
-div.application {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-mat-sidenav-container {
-  flex: 1;
-  overflow: hidden;
-}
-
-mat-sidenav-content {
-  height: 100%;
-  overflow: auto;
-}

@@ -1,3 +1,20 @@
-<div fxLayout="row wrap" fxLayoutAlign="start" style="padding: 10px;">
-  <app-team *ngFor="let team of grouping.teams" [team]="team"></app-team>
-</div>
+<mat-horizontal-stepper>
+  <mat-step label="Create teams">
+    <div fxLayout="row wrap" fxLayoutAlign="start" style="padding: 10px;">
+      <app-team *ngFor="let team of grouping.teams" [team]="team"></app-team>
+    </div>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Create match">
+    <div fxLayout="row wrap" fxLayoutAlign="start" style="padding: 10px;">
+      <app-team *ngFor="let team of grouping.teams" [team]="team"></app-team>
+    </div>
+  </mat-step>
+  <mat-step label="Done">
+    <div fxLayout="row wrap" fxLayoutAlign="start" style="padding: 10px;">
+      <app-team *ngFor="let team of grouping.teams" [team]="team"></app-team>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

@@ -1,7 +1,11 @@
-<mat-card droppable fxFlex="200px" style="margin: 10px;" (onDrop)="onPlayerDrop($event)">
+<mat-card droppable draggable fxFlex="200px" style="margin: 10px;" (onDrop)="onPlayerDrop($event)" [dropScope]="'player'">
+  <mat-card-title style="font-family: 'Splatfont';">
+    チームA
+  </mat-card-title>
   <mat-list style="padding-top: 0;">
-    <app-player *ngFor="let player of team.players" [player]="player" (deleteRequest)="deletePlayer($event)">
-      {{player.name}}
-    </app-player>
+    <app-player *ngFor="let player of team.players" [player]="player" (deleteRequest)="deletePlayer($event)"></app-player>
   </mat-list>
+  <mat-card-actions>
+    <button mat-button>OK</button>
+  </mat-card-actions>
 </mat-card>
