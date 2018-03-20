@@ -11,6 +11,8 @@ import { Player } from '../player/player';
 })
 export class TeamComponent {
   @Input() team: Team;
+  @Input() teamDragDropEnabled: boolean;
+  @Input() playerDragDropEnabled: boolean;
 
   constructor() { }
 

@@ -1,7 +1,7 @@
 <mat-horizontal-stepper>
   <mat-step label="Create teams">
     <div fxLayout="row wrap" fxLayoutAlign="start" style="padding: 10px;">
-      <app-team *ngFor="let team of grouping.teams" [team]="team"></app-team>
+      <app-team *ngFor="let team of grouping.teams" [team]="team" [teamDragDropEnabled]="false" [playerDragDropEnabled]="true"></app-team>
     </div>
     <div>
       <button mat-button matStepperNext>Next</button>
@@ -9,7 +9,7 @@
   </mat-step>
   <mat-step label="Create match">
     <div fxLayout="row wrap" fxLayoutAlign="start" style="padding: 10px;">
-      <app-team *ngFor="let team of grouping.teams" [team]="team"></app-team>
+      <app-team *ngFor="let team of grouping.teams" [team]="team" [teamDragDropEnabled]="true" [playerDragDropEnabled]="false"></app-team>
     </div>
   </mat-step>
   <mat-step label="Done">

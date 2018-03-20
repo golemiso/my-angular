@@ -8,6 +8,7 @@ import { Player } from './player';
 })
 export class PlayerComponent {
   @Input() player: Player;
+  @Input() playerDragDropEnabled: boolean;
   @Output() deleteRequest = new EventEmitter<Player>();
 
   constructor() { }
