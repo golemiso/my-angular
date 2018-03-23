@@ -1,8 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { NgDragDropModule } from 'ng-drag-drop';
+import { HttpClientModule } from '@angular/common/http';
 
+import { NgDragDropModule } from 'ng-drag-drop';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
@@ -19,7 +20,6 @@ import { TeamComponent } from './team/team.component';
 import { GroupingComponent } from './grouping/grouping.component';
 import { GroupingService } from './grouping/grouping.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
 
 @NgModule({
   declarations: [
@@ -38,7 +38,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AppRoutingModule,
     MaterialModule,
     NgDragDropModule.forRoot(),
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   ],
   providers: [
     HeroService,
