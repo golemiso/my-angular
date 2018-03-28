@@ -6,13 +6,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgDragDropModule } from 'ng-drag-drop';
 
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { HeroService } from './hero.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 import { AppRoutingModule } from './app-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { PlayerComponent } from './player/player.component';
 import { PlayerService } from './player/player.service';
 import { MaterialModule } from './common/material/material.module';
@@ -24,10 +20,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent,
-    HeroDetailComponent,
     MessagesComponent,
-    DashboardComponent,
     PlayerComponent,
     TeamComponent,
     GroupingComponent
@@ -42,7 +35,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HttpClientModule
   ],
   providers: [
-    HeroService,
     MessageService,
     PlayerService,
     GroupingService

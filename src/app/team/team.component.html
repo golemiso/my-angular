@@ -1,11 +1,8 @@
-<mat-card droppable [draggable] fxFlex="200px" style="margin: 10px;" [dropEnabled]="playerDragDropEnabled" [dragEnabled]="teamDragDropEnabled" (onDrop)="onPlayerDrop($event)" [dropScope]="'player'">
+<mat-card droppable [draggable] fxFlex="200px" style="margin: 10px;" [dropEnabled]="playerDragDropEnabled" [dragEnabled]="teamDragDropEnabled" (onDrop)="onPlayerDrop($event)" [dropScope]="'player'" [dragScope]="'team'">
   <mat-card-title style="font-family: 'Splatfont';">
     <mat-icon *ngIf="teamDragDropEnabled">drag_handle</mat-icon>チームA
   </mat-card-title>
   <mat-list style="padding-top: 0;">
     <app-player *ngFor="let player of team.players" [player]="player" [playerDragDropEnabled]="playerDragDropEnabled" (deleteRequest)="deletePlayer($event)"></app-player>
   </mat-list>
-  <mat-card-actions>
-    <button mat-button>OK</button>
-  </mat-card-actions>
 </mat-card>
