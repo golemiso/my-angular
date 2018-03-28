@@ -34,6 +34,7 @@ export class GroupingService {
     for (let i = 0; i < makeInto; i++) {
       const team = new Team;
       team.players = [];
+      team.title = 'team' + (i + 1);
       grouping.teams.push(team);
     }
 
@@ -85,6 +86,7 @@ export const GROUPING: Grouping = {
   teams: [
     {
       id: '0',
+      title: 'team1',
       players: [
         {
           id: '0',
@@ -106,6 +108,7 @@ export const GROUPING: Grouping = {
     },
     {
       id: '1',
+      title: 'team2',
       players: [
         {
           id: '4',
@@ -131,6 +134,7 @@ export const GROUPING: Grouping = {
     },
     {
       id: '2',
+      title: 'team3',
       players: [
         {
           id: '0',

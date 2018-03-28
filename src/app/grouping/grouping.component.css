@@ -1,8 +1,5 @@
-.area {
-  width: 45em;
-  padding: 10px;
-}
 #dropZone {
+  margin: 20px;
   border: 2px dashed #bbb;
   -webkit-border-radius: 5px;
   border-radius: 5px;

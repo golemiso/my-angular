@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { NgDragDropModule } from 'ng-drag-drop';
 
@@ -15,7 +16,7 @@ import { MaterialModule } from './common/material/material.module';
 import { TeamComponent } from './team/team.component';
 import { GroupingComponent } from './grouping/grouping.component';
 import { GroupingService } from './grouping/grouping.service';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { BattleComponent } from './battle/battle.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MessagesComponent,
     PlayerComponent,
     TeamComponent,
-    GroupingComponent
+    GroupingComponent,
+    BattleComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
-<mat-horizontal-stepper *ngIf="grouping">
-  <mat-step label="Create teams">
+<mat-horizontal-stepper *ngIf="grouping" [linear]>
+  <mat-step label="Arrange teams">
     <div fxLayout="row wrap" fxLayoutAlign="start" style="padding: 10px;">
       <app-team *ngFor="let team of grouping.teams" [team]="team" [teamDragDropEnabled]="false" [playerDragDropEnabled]="true"></app-team>
     </div>
@@ -7,20 +7,18 @@
       <button mat-button matStepperNext>Next</button>
     </div>
   </mat-step>
-  <mat-step label="Create match">
+  <mat-step label="Arrange battles">
     <div fxLayout="row wrap" fxLayoutAlign="start" style="padding: 10px;">
       <app-team *ngFor="let team of grouping.teams" [team]="team" [teamDragDropEnabled]="true" [playerDragDropEnabled]="false"></app-team>
-      <div class="area">
-        <div id="dropZone" droppable [dropScope]="'team'">Drop teams here</div>
-      </div>
     </div>
+    <div id="dropZone" droppable [dropScope]="'team'" (onDrop)="onTeamDrop($event)">Drop teams here</div>
+    <app-battle *ngFor="let battle of battles" [battle]="battle"></app-battle>
     <div>
+      <button mat-button matStepperPrevious>Previous</button>
       <button mat-button matStepperNext>Next</button>
     </div>
   </mat-step>
-  <mat-step label="Done">
-    <div fxLayout="row wrap" fxLayoutAlign="start" style="padding: 10px;">
-      <app-team *ngFor="let team of grouping.teams" [team]="team" [teamDragDropEnabled]="false" [playerDragDropEnabled]="false"></app-team>
-    </div>
+  <mat-step label="Confirm">
+    <app-battle *ngFor="let battle of battles" [battle]="battle"></app-battle>
   </mat-step>
 </mat-horizontal-stepper>

@@ -6,7 +6,9 @@ import {
   MatListModule,
   MatSidenavModule,
   MatToolbarModule,
-  MatStepperModule
+  MatStepperModule,
+  MatExpansionModule,
+  MatSelectModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -19,7 +21,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatListModule,
     MatSidenavModule,
     MatCardModule,
-    MatStepperModule
+    MatStepperModule,
+    MatExpansionModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule {
