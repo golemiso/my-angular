@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Grouping } from './grouping';
 import { MessageService } from '../message.service';
-import { Player, PlayerRecord } from '../player/player';
+import { PlayerRecord } from '../player/player';
 import { Team } from '../team/team';
 import { Battle } from '../battle/battle';
 
@@ -62,7 +62,7 @@ export class GroupingService {
 
   addBattle(battle: Battle): Observable<Battle> {
     return this.http.post<Battle>('http://localhost:9000/battles', battle, httpOptions).pipe(
-      tap((battle: Battle) => this.log(`added battle w/ id=${battle.id}`)),
+      tap((b: Battle) => this.log(`added battle w/ id=${b.id}`)),
       catchError(this.handleError<Battle>('addBattle'))
     );
   }

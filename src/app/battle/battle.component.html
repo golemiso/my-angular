@@ -7,15 +7,8 @@
       {{battle.mode}}
     </mat-panel-description>
   </mat-expansion-panel-header>
-
-  <p>This is the primary content of the panel.</p>
-  <mat-form-field>
-    <mat-select [(value)]="battle.mode">
-      <mat-option value="turf_war">Turf War</mat-option>
-      <mat-option value="splat_zones">Splat Zones</mat-option>
-      <mat-option value="tower_control">Tower Control</mat-option>
-      <mat-option value="rainmaker">Rainmaker</mat-option>
-      <mat-option value="clam_blitz">Clam Blitz</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div fxLayout="row wrap" fxLayoutAlign="start">
+    <app-team *ngFor="let team of battle.teams" [team]="team" [teamDragDropEnabled]="false" [playerDragDropEnabled]="false"></app-team>
+  </div>
+  <app-modes [(mode)]="battle.mode"></app-modes>
 </mat-expansion-panel>

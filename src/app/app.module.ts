@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -17,6 +17,9 @@ import { TeamComponent } from './team/team.component';
 import { GroupingComponent } from './grouping/grouping.component';
 import { GroupingService } from './grouping/grouping.service';
 import { BattleComponent } from './battle/battle.component';
+import { ModesComponent } from './battle/modes/modes.component';
+import { ResultComponent } from './result/result.component';
+import { ResultService } from './result/result.service';
 
 @NgModule({
   declarations: [
@@ -25,11 +28,14 @@ import { BattleComponent } from './battle/battle.component';
     PlayerComponent,
     TeamComponent,
     GroupingComponent,
-    BattleComponent
+    BattleComponent,
+    ModesComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     MaterialModule,
     NgDragDropModule.forRoot(),
@@ -39,7 +45,8 @@ import { BattleComponent } from './battle/battle.component';
   providers: [
     MessageService,
     PlayerService,
-    GroupingService
+    GroupingService,
+    ResultService
   ],
   bootstrap: [AppComponent]
 })

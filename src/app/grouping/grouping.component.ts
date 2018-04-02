@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import "rxjs/add/observable/zip";
+import 'rxjs/add/observable/zip';
 import { GroupingService } from './grouping.service';
 import { Grouping } from './grouping';
 import { Battle } from '../battle/battle';

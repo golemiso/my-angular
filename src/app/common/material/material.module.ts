@@ -8,7 +8,8 @@ import {
   MatToolbarModule,
   MatStepperModule,
   MatExpansionModule,
-  MatSelectModule
+  MatSelectModule,
+  MatFormFieldModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -23,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCardModule,
     MatStepperModule,
     MatExpansionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatFormFieldModule
   ]
 })
 export class MaterialModule {

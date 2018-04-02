@@ -1,0 +1,10 @@
+<mat-form-field>
+  <mat-select placeholder="Modes" [formControl]="modeControl" required [(ngModel)]="mode" (valueChange)="modeChange.emit($event)">
+    <mat-optgroup *ngFor="let g of battleModeGroups" [label]="g.name">
+      <mat-option *ngFor="let m of g.modes" [value]="m.value">
+        {{ m.label }}
+      </mat-option>
+    </mat-optgroup>
+  </mat-select>
+  <mat-error *ngIf="modeControl.hasError('required')">Please choose a mode</mat-error>
+</mat-form-field>
