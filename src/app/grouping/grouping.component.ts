@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import "rxjs/add/observable/zip";
 import { GroupingService } from './grouping.service';
 import { Grouping } from './grouping';
 import { Battle } from '../battle/battle';
@@ -38,5 +40,10 @@ export class GroupingComponent implements OnInit {
       this.battles.push(battle);
       this.tempTeams = [];
     }
+  }
+
+  addBattles(e: Event) {
+    this.service.addBattle(this.battles[0]).subscribe(b => b);
+    // Observable.zip(this.battles.map(battle => this.service.addBattle(battle))).subscribe(battles => battles);
   }
 }

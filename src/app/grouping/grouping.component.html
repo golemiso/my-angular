@@ -20,5 +20,8 @@
   </mat-step>
   <mat-step label="Confirm">
     <app-battle *ngFor="let battle of battles" [battle]="battle"></app-battle>
+    <div>
+      <button mat-button (click)="addBattles($event)">Done</button>
+    </div>
   </mat-step>
 </mat-horizontal-stepper>

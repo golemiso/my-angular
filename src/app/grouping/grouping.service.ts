@@ -8,6 +8,11 @@ import { Grouping } from './grouping';
 import { MessageService } from '../message.service';
 import { Player, PlayerRecord } from '../player/player';
 import { Team } from '../team/team';
+import { Battle } from '../battle/battle';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable()
 export class GroupingService {
@@ -19,7 +24,7 @@ export class GroupingService {
     private messageService: MessageService) { }
 
   getGrouping(): Observable<Grouping> {
-    return this.http.get<PlayerRecord[]>(this.url).pipe(
+    return this.http.get<PlayerRecord[]>(this.url, httpOptions).pipe(
       map(playerRecords => this.makeGroupsFromPlayerRecords(playerRecords)),
       tap(_ => this.log(`fetched grouping`)),
       catchError(this.handleError('getUserRankings', GROUPING))
@@ -55,6 +60,13 @@ export class GroupingService {
     return grouping;
   }
 
+  addBattle(battle: Battle): Observable<Battle> {
+    return this.http.post<Battle>('http://localhost:9000/battles', battle, httpOptions).pipe(
+      tap((battle: Battle) => this.log(`added battle w/ id=${battle.id}`)),
+      catchError(this.handleError<Battle>('addBattle'))
+    );
+  }
+
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
     this.messageService.add('GroupingService: ' + message);
@@ -66,7 +78,7 @@ export class GroupingService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
