@@ -7,8 +7,7 @@ import { Battle } from './battle';
   styleUrls: ['./battle.component.css']
 })
 export class BattleComponent implements OnInit {
-  @Input() battle: Battle;
-  @Input() title: string;
+  @Input() battles: Battle[];
 
   constructor() { }
 
