@@ -1,0 +1,12 @@
+<mat-list>
+  <mat-list-item *ngFor="let player of players">
+    <p class="player_name">{{player.name}}</p>
+  </mat-list-item>
+</mat-list>
+
+<mat-form-field>
+  <input matInput placeholder="Player name" #playerName>
+</mat-form-field>
+<button mat-button (click)="add(playerName.value); playerName.value=''">
+  add
+</button>
