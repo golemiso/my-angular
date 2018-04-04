@@ -5,4 +5,10 @@ export class Battle {
   title: string;
   mode: string;
   teams: Team[];
+  result: BattleResult;
+}
+
+export class BattleResult {
+  victory: string;
+  defeat: string;
 }

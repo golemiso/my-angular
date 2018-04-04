@@ -13,7 +13,7 @@ const httpOptions = {
 @Injectable()
 export class PlayerService {
 
-  private url = 'http://localhost:9000/players';
+  private url = 'http://api.ama.golemiso.com/players';
 
   constructor(private http: HttpClient,
               private messageService: MessageService) { }

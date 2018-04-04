@@ -9,7 +9,20 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <div fxLayout="row wrap" fxLayoutAlign="start">
-      <app-team *ngFor="let team of battle.teams" [team]="team" [teamDragDropEnabled]="false" [playerDragDropEnabled]="false"></app-team>
+      <form>
+        <mat-radio-group ([ngModel])="battle.result.victory" (ngModelChange)="battle.result.victory = $event">
+          <mat-radio-button *ngFor="let team of battle.teams" [value]="team.id">
+            <mat-card>
+              <mat-card-title style="font-family: 'Splatfont';">
+                {{ team.title }}
+              </mat-card-title>
+              <mat-list style="padding-top: 0;">
+                <app-player *ngFor="let player of team.players" [player]="player"></app-player>
+              </mat-list>
+            </mat-card>
+          </mat-radio-button>
+        </mat-radio-group>
+      </form>
     </div>
     <app-modes [(mode)]="battle.mode"></app-modes>
   </mat-expansion-panel>

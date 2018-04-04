@@ -13,7 +13,7 @@ const httpOptions = {
 @Injectable()
 export class ResultService {
 
-  private url = 'http://localhost:9000/battles';
+  private url = 'http://api.ama.golemiso.com/battles';
 
   constructor(private http: HttpClient,
               private messageService: MessageService) { }
