@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ResultService } from './result.service';
 import { Battle, BattleResult } from '../battle/battle';
+import { BattleService } from '../battle/battle.service';
 
 @Component({
   selector: 'app-result',
@@ -10,7 +10,7 @@ import { Battle, BattleResult } from '../battle/battle';
 export class ResultComponent implements OnInit {
   battles: Battle[];
 
-  constructor(private service: ResultService) { }
+  constructor(private service: BattleService) { }
 
   ngOnInit() {
     this.getResults();
@@ -18,11 +18,6 @@ export class ResultComponent implements OnInit {
 
   getResults() {
     this.service.getBattles()
-      .subscribe(battles => this.battles = battles.map(b => {
-        if (!b.result) {
-          b.result = new BattleResult;
-        }
-        return b;
-      }));
+      .subscribe(battles => this.battles = battles);
   }
 }

@@ -21,6 +21,8 @@ import { ModesComponent } from './battle/modes/modes.component';
 import { ResultComponent } from './result/result.component';
 import { ResultService } from './result/result.service';
 import { PlayersComponent } from './player/players.component';
+import { BattleComponent } from './battle/battle.component';
+import { BattleService } from './battle/battle.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { PlayersComponent } from './player/players.component';
     BattlesComponent,
     ModesComponent,
     ResultComponent,
-    PlayersComponent
+    PlayersComponent,
+    BattleComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { PlayersComponent } from './player/players.component';
     MessageService,
     PlayerService,
     GroupingService,
-    ResultService
+    ResultService,
+    BattleService
   ],
   bootstrap: [AppComponent]
 })

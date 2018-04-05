@@ -31,28 +31,28 @@ export class GroupingService {
     );
   }
 
-  private makeGroupsFromPlayerRecords(playerRecords: PlayerRecord[], makeInto: number = 4, playersPerTeam: number = 4): Grouping {
+  private makeGroupsFromPlayerRecords(playerRecords: PlayerRecord[], into: number = 4, playersPerTeam: number = 4): Grouping {
     const count = playerRecords.length;
     const grouping = new Grouping;
     grouping.teams = [];
 
-    for (let i = 0; i < makeInto; i++) {
+    for (let i = 0; i < into; i++) {
       const team = new Team;
       team.players = [];
       team.title = 'team' + (i + 1);
       grouping.teams.push(team);
     }
 
-    for (let i = 0; i < makeInto * playersPerTeam && i < count; i++) {
-      const q = Math.floor((i + 1) / makeInto);
-      const r = (i + 1) % makeInto;
+    for (let i = 0; i < into * playersPerTeam && i < count; i++) {
+      const q = Math.floor(i / into);
+      const r = i % into;
 
       switch (q % 2) {
         case 0: // even
           grouping.teams[r].players.push(playerRecords[i].player);
           break;
         case 1: // odd
-          grouping.teams[makeInto - 1 - r].players.push(playerRecords[i].player);
+          grouping.teams[into - 1 - r].players.push(playerRecords[i].player);
           break;
       }
     }

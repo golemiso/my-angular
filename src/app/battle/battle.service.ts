@@ -1,34 +1,34 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MessageService } from '../message.service';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Player } from './player';
+import { Battle } from './battle';
 import { catchError, tap } from 'rxjs/operators';
-import { MessageService } from '../message.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable()
-export class PlayerService {
+export class BattleService {
 
-  private url = 'http://api.ama.golemiso.com/players';
+  private url = 'http://api.ama.golemiso.com/battles';
 
   constructor(private http: HttpClient,
               private messageService: MessageService) { }
 
-  getPlayers(): Observable<Player[]> {
-    return this.http.get<Player[]>(this.url, httpOptions).pipe(
-      tap(() => this.log(`fetched players`)),
-      catchError(this.handleError('getPlayers', []))
+  getBattles(): Observable<Battle[]> {
+    return this.http.get<Battle[]>(this.url, httpOptions).pipe(
+      tap(_ => this.log(`fetched battles`)),
+      catchError(this.handleError('getBattles', []))
     );
   }
 
-  addPlayer(player: Player): Observable<Player> {
-    return this.http.post<Player>(this.url, player, httpOptions).pipe(
-      tap((p: Player) => this.log(`added player w/ id=${p.id}`)),
-      catchError(this.handleError<Player>('addPlayer'))
+  updateBattle(battle: Battle): Observable<Battle> {
+    return this.http.put<Battle>(`${this.url}/${battle.id}`,battle, httpOptions).pipe(
+      tap((b: Battle) => this.log(`updated battle w/ id=${b.id}`)),
+      catchError(this.handleError<Battle>('updateBattle'))
     );
   }
 

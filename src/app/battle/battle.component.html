@@ -1,0 +1,16 @@
+<form>
+  <div fxLayout="row wrap" fxLayoutAlign="start">
+    <label *ngFor="let team of battle.teams">
+      <input type="radio" [value]="team.id" name="victor" [ngModel]="battle.result.victory" (ngModelChange)="judge($event)">
+      <mat-card>
+        <mat-card-title style="font-family: 'Splatfont';">
+          {{ team.title }}
+        </mat-card-title>
+        <mat-list style="padding-top: 0;">
+          <app-player *ngFor="let player of team.players" [player]="player"></app-player>
+        </mat-list>
+      </mat-card>
+    </label>
+  </div>
+  <app-modes [(mode)]="battle.mode"></app-modes>
+</form>
