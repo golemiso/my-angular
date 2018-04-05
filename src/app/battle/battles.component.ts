@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Battle } from './battle';
 
 @Component({
-  selector: 'app-battle',
-  templateUrl: './battle.component.html',
-  styleUrls: ['./battle.component.css']
+  selector: 'app-battles',
+  templateUrl: './battles.component.html',
+  styleUrls: ['./battles.component.css']
 })
-export class BattleComponent implements OnInit {
+export class BattlesComponent implements OnInit {
   @Input() battles: Battle[];
 
   constructor() { }

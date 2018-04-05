@@ -16,7 +16,7 @@ import { MaterialModule } from './common/material/material.module';
 import { TeamComponent } from './team/team.component';
 import { GroupingComponent } from './grouping/grouping.component';
 import { GroupingService } from './grouping/grouping.service';
-import { BattleComponent } from './battle/battle.component';
+import { BattlesComponent } from './battle/battles.component';
 import { ModesComponent } from './battle/modes/modes.component';
 import { ResultComponent } from './result/result.component';
 import { ResultService } from './result/result.service';
@@ -29,7 +29,7 @@ import { PlayersComponent } from './player/players.component';
     PlayerComponent,
     TeamComponent,
     GroupingComponent,
-    BattleComponent,
+    BattlesComponent,
     ModesComponent,
     ResultComponent,
     PlayersComponent

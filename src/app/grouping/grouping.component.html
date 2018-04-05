@@ -12,14 +12,14 @@
       <app-team *ngFor="let team of grouping.teams" [team]="team" [teamDragDropEnabled]="true" [playerDragDropEnabled]="false"></app-team>
     </div>
     <div id="dropZone" droppable [dropScope]="'team'" (onDrop)="onTeamDrop($event)">Drop teams here</div>
-    <app-battle [battles]="battles"></app-battle>
+    <app-battles [battles]="battles"></app-battles>
     <div>
       <button mat-button matStepperPrevious>Previous</button>
       <button mat-button matStepperNext>Next</button>
     </div>
   </mat-step>
   <mat-step label="Confirm">
-    <app-battle [battles]="battles"></app-battle>
+    <app-battles [battles]="battles"></app-battles>
     <div>
       <button mat-button (click)="addBattles($event)">Done</button>
     </div>
