@@ -1,0 +1,6 @@
+<mat-list>
+  <mat-list-item *ngFor="let playerRanking of playerRankings">
+    <button mat-mini-fab color="primary">{{playerRanking.rank}}</button>
+    <p class="player_name">{{playerRanking.player.name}}</p>
+  </mat-list-item>
+</mat-list>
