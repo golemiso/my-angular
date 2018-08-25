@@ -9,30 +9,26 @@ import { FormControl, Validators } from '@angular/forms';
 export class ModesComponent {
   @Input() mode: string;
   @Output() modeChange = new EventEmitter<string>();
+  @Input() editable: boolean;
 
   modeControl = new FormControl('', [Validators.required]);
 
   battleModeGroups = [
-    { name: 'Regular Battle',
+    {
+      name: 'レギューラーマッチ',
       modes: [
-        { value: 'turf_war', label: 'Turf War' }
+        { value: 'turf_war', label: 'ナワバリバトル' }
       ]
     },
-    { name: 'Ranked Battle',
+    {
+      name: 'ガチマッチ',
       modes: [
-        { value: 'splat_zones', label: 'Splat Zones' },
-        { value: 'tower_control', label: 'Tower Control' },
-        { value: 'rainmaker', label: 'Rainmaker' },
-        { value: 'clam_blitz', label: 'Clam Blitz' }
+        { value: 'splat_zones', label: 'ガチエリア' },
+        { value: 'tower_control', label: 'ガチヤグラ' },
+        { value: 'rainmaker', label: 'ガチホコバトル' },
+        { value: 'clam_blitz', label: 'ガチアサリ' }
       ]
     }
-  ];
-  battleModes = [
-    { value: 'turf_war', label: 'Turf War' },
-    { value: 'splat_zones', label: 'Splat Zones' },
-    { value: 'tower_control', label: 'Tower Control' },
-    { value: 'rainmaker', label: 'Rainmaker' },
-    { value: 'clam_blitz', label: 'Clam Blitz' }
   ];
 
   constructor() { }

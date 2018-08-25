@@ -20,4 +20,9 @@ export class ResultComponent implements OnInit {
     this.service.getBattles()
       .subscribe(battles => this.battles = battles);
   }
+
+  deleteBattle(battle) {
+    const index = this.battles.indexOf(battle, 0);
+    this.battles.splice(index, 1);
+  }
 }

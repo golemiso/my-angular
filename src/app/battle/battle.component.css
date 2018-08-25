@@ -1,0 +1,10 @@
+input[type=radio] {
+  display: none;
+}
+label {
+  margin: 10px;
+}
+
+.mat-card--battle {
+  margin: 20px;
+}

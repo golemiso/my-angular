@@ -1,3 +1,5 @@
-<mat-list-item [draggable] [dragData]="this" [dragScope]="'player'" [dragEnabled]="playerDragDropEnabled" style="font-family: 'Splatfont 2';" [dragHandle]="'mat-icon'" role="listitem">
-  <mat-icon *ngIf="playerDragDropEnabled">drag_handle</mat-icon><p class="player_name">{{player.name}}</p>
+<mat-list-item [draggable] [dragData]="this" [dragScope]="'player'" [dragEnabled]="playerDragDropEnabled" style="font-family: 'Splatfont 2';"
+  [dragHandle]="'mat-icon'" role="listitem">
+  <mat-icon *ngIf="playerDragDropEnabled">drag_handle</mat-icon>
+  <p class="player_name">{{player.name}}</p>
 </mat-list-item>

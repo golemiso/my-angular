@@ -1,18 +1,17 @@
 <div class="application">
   <mat-toolbar color="primary" class="example-toolbar">
-    <button mat-icon-button  (click)="snav.toggle()">
+    <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1 class="example-app-name">Responsive App</h1>
+    <h1 style="font-family: 'Splatfont';">Splatoon 2</h1>
   </mat-toolbar>
   <mat-sidenav-container>
     <mat-sidenav #snav>
       <mat-nav-list>
-        <a mat-list-item routerLink="/dashboard" (click)="snav.close()">Dashboard</a>
-        <a mat-list-item routerLink="/heroes" (click)="snav.close()">Heroes</a>
-        <a mat-list-item routerLink="/players" (click)="snav.close()">Players</a>
-        <a mat-list-item routerLink="/groupings" (click)="snav.close()">Groupings</a>
-        <a mat-list-item routerLink="/results" (click)="snav.close()">Results</a>
+        <a mat-list-item routerLink="/players" (click)="snav.close()">プレイヤー</a>
+        <a mat-list-item routerLink="/groupings" (click)="snav.close()">チームぎめ</a>
+        <a mat-list-item routerLink="/results" (click)="snav.close()">対戦結果</a>
+        <a mat-list-item routerLink="/rankings" (click)="snav.close()">ランキング</a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav position="end">End</mat-sidenav>

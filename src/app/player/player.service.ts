@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Player } from './player';
+import { Player, PlayerRecord } from './player';
 import { catchError, tap } from 'rxjs/operators';
 import { MessageService } from '../message.service';
 
@@ -16,12 +16,19 @@ export class PlayerService {
   private url = 'http://api.ama.golemiso.com/players';
 
   constructor(private http: HttpClient,
-              private messageService: MessageService) { }
+    private messageService: MessageService) { }
 
   getPlayers(): Observable<Player[]> {
     return this.http.get<Player[]>(this.url, httpOptions).pipe(
       tap(() => this.log(`fetched players`)),
       catchError(this.handleError('getPlayers', []))
+    );
+  }
+
+  getPlayerRankings(): Observable<PlayerRecord[]> {
+    return this.http.get<PlayerRecord[]>('http://api.ama.golemiso.com/rankings?rankBy=total', httpOptions).pipe(
+      tap(_ => this.log(`fetched player rankings`)),
+      catchError(this.handleError('getPlayerRankings', []))
     );
   }
 

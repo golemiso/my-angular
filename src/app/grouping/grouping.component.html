@@ -21,6 +21,7 @@
   <mat-step label="Confirm">
     <app-battles [battles]="battles"></app-battles>
     <div>
+      <button mat-button matStepperPrevious>Previous</button>
       <button mat-button (click)="addBattles($event)">Done</button>
     </div>
   </mat-step>

@@ -14,4 +14,8 @@ export class BattlesComponent implements OnInit {
   ngOnInit() {
   }
 
+  deleteBattle(battle) {
+    const index = this.battles.indexOf(battle, 0);
+    this.battles.splice(index, 1);
+  }
 }

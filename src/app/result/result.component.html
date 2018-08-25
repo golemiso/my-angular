@@ -1,13 +1,1 @@
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let battle of battles">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{battle.title}}
-      </mat-panel-title>
-      <mat-panel-description>
-        {{battle.mode}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <app-battle [battle]="battle"></app-battle>
-  </mat-expansion-panel>
-</mat-accordion>
+<app-battle *ngFor="let battle of battles" [battle]="battle" [resultMode]="true" (deleteBattleRequest)="deleteBattle($event)"></app-battle>

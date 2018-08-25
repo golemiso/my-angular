@@ -3,12 +3,7 @@ export class Player {
   name: string;
 }
 
-class Record {
-  victory: number;
-  defeat: number;
-}
-
 export class PlayerRecord {
   player: Player;
-  record: Record;
+  rank: number;
 }

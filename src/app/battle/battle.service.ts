@@ -16,7 +16,7 @@ export class BattleService {
   private url = 'http://api.ama.golemiso.com/battles';
 
   constructor(private http: HttpClient,
-              private messageService: MessageService) { }
+    private messageService: MessageService) { }
 
   getBattles(): Observable<Battle[]> {
     return this.http.get<Battle[]>(this.url, httpOptions).pipe(
@@ -26,9 +26,16 @@ export class BattleService {
   }
 
   updateBattle(battle: Battle): Observable<Battle> {
-    return this.http.put<Battle>(`${this.url}/${battle.id}`,battle, httpOptions).pipe(
+    return this.http.put<Battle>(`${this.url}/${battle.id}`, battle, httpOptions).pipe(
       tap((b: Battle) => this.log(`updated battle w/ id=${b.id}`)),
       catchError(this.handleError<Battle>('updateBattle'))
+    );
+  }
+
+  removeBattle(battle: Battle): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${battle.id}`, httpOptions).pipe(
+      tap(() => this.log(`deleted battle w/ id=${battle.id}`)),
+      catchError(this.handleError<void>('updateBattle'))
     );
   }
 

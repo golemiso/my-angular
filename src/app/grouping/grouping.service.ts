@@ -39,7 +39,7 @@ export class GroupingService {
     for (let i = 0; i < into; i++) {
       const team = new Team;
       team.players = [];
-      team.title = 'team' + (i + 1);
+      team.title = 'チーム' + (i + 1);
       grouping.teams.push(team);
     }
 

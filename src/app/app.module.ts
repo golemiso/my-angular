@@ -23,6 +23,7 @@ import { ResultService } from './result/result.service';
 import { PlayersComponent } from './player/players.component';
 import { BattleComponent } from './battle/battle.component';
 import { BattleService } from './battle/battle.service';
+import { RankingComponent } from './player/ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { BattleService } from './battle/battle.service';
     ModesComponent,
     ResultComponent,
     PlayersComponent,
-    BattleComponent
+    BattleComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,

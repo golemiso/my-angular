@@ -1,6 +1,7 @@
 <mat-form-field>
-  <mat-select placeholder="Modes" [formControl]="modeControl" required [(ngModel)]="mode" (valueChange)="modeChange.emit($event)">
-    <mat-optgroup *ngFor="let g of battleModeGroups" [label]="g.name">
+  <mat-select placeholder="ルール" [formControl]="modeControl" required [(ngModel)]="mode" (valueChange)="modeChange.emit($event)"
+    [disabled]="!editable">
+    <mat-optgroup *ngFor="let g of battleModeGroups" [label]="g.name" style="font-family: 'SplatFont';">
       <mat-option *ngFor="let m of g.modes" [value]="m.value">
         {{ m.label }}
       </mat-option>

@@ -1,16 +1,1 @@
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let battle of battles">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{battle.title}}
-      </mat-panel-title>
-      <mat-panel-description>
-        {{battle.mode}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <div fxLayout="row wrap" fxLayoutAlign="start">
-      <app-team *ngFor="let team of battle.teams" [team]="team" [teamDragDropEnabled]="false" [playerDragDropEnabled]="false"></app-team>
-    </div>
-    <app-modes [(mode)]="battle.mode"></app-modes>
-  </mat-expansion-panel>
-</mat-accordion>
+<app-battle *ngFor="let battle of battles" [battle]="battle" [resultMode]="false" (deleteBattleRequest)="deleteBattle($event)"></app-battle>
