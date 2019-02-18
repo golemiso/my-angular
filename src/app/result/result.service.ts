@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from '../message.service';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,10 +14,10 @@ const httpOptions = {
 @Injectable()
 export class ResultService {
 
-  private url = 'http://api.ama.golemiso.com/battles';
+  private url = `${environment.apiUrl}/battles`;
 
   constructor(private http: HttpClient,
-              private messageService: MessageService) { }
+    private messageService: MessageService) { }
 
   getBattles(): Observable<Battle[]> {
     return this.http.get<Battle[]>(this.url, httpOptions).pipe(

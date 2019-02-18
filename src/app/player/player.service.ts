@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Player, PlayerRecord } from './player';
 import { catchError, tap } from 'rxjs/operators';
 import { MessageService } from '../message.service';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,7 +14,7 @@ const httpOptions = {
 @Injectable()
 export class PlayerService {
 
-  private url = 'http://api.ama.golemiso.com/players';
+  private url = `${environment.apiUrl}/players`;
 
   constructor(private http: HttpClient,
     private messageService: MessageService) { }
@@ -26,7 +27,7 @@ export class PlayerService {
   }
 
   getPlayerRankings(): Observable<PlayerRecord[]> {
-    return this.http.get<PlayerRecord[]>('http://api.ama.golemiso.com/rankings?rankBy=total', httpOptions).pipe(
+    return this.http.get<PlayerRecord[]>('http://localhost:9000/rankings?rankBy=total', httpOptions).pipe(
       tap(_ => this.log(`fetched player rankings`)),
       catchError(this.handleError('getPlayerRankings', []))
     );

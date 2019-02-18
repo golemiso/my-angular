@@ -9,6 +9,7 @@ import { MessageService } from '../message.service';
 import { PlayerRecord } from '../player/player';
 import { Team } from '../team/team';
 import { Battle } from '../battle/battle';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,7 +18,7 @@ const httpOptions = {
 @Injectable()
 export class GroupingService {
 
-  private url = 'http://api.ama.golemiso.com/rankings?rankBy=user';
+  private url = `${environment.apiUrl}/rankings?rankBy=user`;
 
   constructor(
     private http: HttpClient,
@@ -61,7 +62,7 @@ export class GroupingService {
   }
 
   addBattle(battle: Battle): Observable<Battle> {
-    return this.http.post<Battle>('http://api.ama.golemiso.com/battles', battle, httpOptions).pipe(
+    return this.http.post<Battle>('http://localhost:9000/battles', battle, httpOptions).pipe(
       tap((b: Battle) => this.log(`added battle w/ id=${b.id}`)),
       catchError(this.handleError<Battle>('addBattle'))
     );

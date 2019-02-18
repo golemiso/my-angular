@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Battle } from './battle';
 import { catchError, tap } from 'rxjs/operators';
+import { environment } from './../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,7 +14,7 @@ const httpOptions = {
 @Injectable()
 export class BattleService {
 
-  private url = 'http://api.ama.golemiso.com/battles';
+  private url = `${environment.apiUrl}/battles`;
 
   constructor(private http: HttpClient,
     private messageService: MessageService) { }
