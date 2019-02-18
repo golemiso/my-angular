@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Player, PlayerRecord } from './player';
 import { catchError, tap } from 'rxjs/operators';
-import { MessageService } from '../message.service';
+import { MessageService } from '../message/message.service';
 import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class PlayerService {
 
   private url = `${environment.apiUrl}/players`;
+  private playerRankingUrl = `${environment.apiUrl}/rankings?rankBy=total`;
 
   constructor(private http: HttpClient,
     private messageService: MessageService) { }
@@ -27,7 +29,7 @@ export class PlayerService {
   }
 
   getPlayerRankings(): Observable<PlayerRecord[]> {
-    return this.http.get<PlayerRecord[]>('http://localhost:9000/rankings?rankBy=total', httpOptions).pipe(
+    return this.http.get<PlayerRecord[]>(this.playerRankingUrl, httpOptions).pipe(
       tap(_ => this.log(`fetched player rankings`)),
       catchError(this.handleError('getPlayerRankings', []))
     );

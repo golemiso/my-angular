@@ -3,11 +3,11 @@ import { PlayerService } from '../player.service';
 import { PlayerRecord } from '../player';
 
 @Component({
-  selector: 'app-ranking',
-  templateUrl: './ranking.component.html',
-  styleUrls: ['./ranking.component.css']
+  selector: 'app-rankings',
+  templateUrl: './rankings.component.html',
+  styleUrls: ['./rankings.component.scss']
 })
-export class RankingComponent implements OnInit {
+export class RankingsComponent implements OnInit {
   playerRankings: PlayerRecord[];
 
   constructor(private service: PlayerService) { }

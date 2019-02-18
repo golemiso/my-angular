@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Battle, BattleResult } from '../battle/battle';
+import { Battle } from '../battle/battle';
 import { BattleService } from '../battle/battle.service';
 
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
-  styleUrls: ['./result.component.css']
+  styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit {
   battles: Battle[];

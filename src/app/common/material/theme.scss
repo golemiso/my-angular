@@ -1,3 +1,6 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
 
@@ -13,7 +16,7 @@ $custom-typography: mat-typography-config(
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://www.google.com/design/spec/style/color.html
+// hue. Available color palettes: https://material.io/design/color/
 $app-primary: mat-palette($mat-deep-orange);
 $app-accent: mat-palette($mat-pink, A200, A100, A400);
 
@@ -27,7 +30,6 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($app-theme);
-
 
 /* Draggable*/
 

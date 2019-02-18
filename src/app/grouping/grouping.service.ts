@@ -2,10 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable, of } from 'rxjs';
 import { Grouping } from './grouping';
-import { MessageService } from '../message.service';
+import { MessageService } from '../message/message.service';
 import { PlayerRecord } from '../player/player';
 import { Team } from '../team/team';
 import { Battle } from '../battle/battle';
@@ -15,7 +14,9 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class GroupingService {
 
   private url = `${environment.apiUrl}/rankings?rankBy=user`;

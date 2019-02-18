@@ -4,8 +4,8 @@
       <app-modes [(mode)]="battle.mode" [editable]="editable"></app-modes>
       <div fxLayout="row wrap" fxLayoutAlign="start">
         <label *ngFor="let team of battle.teams" fxFlex="200px">
-          <input *ngIf="resultMode" type="radio" [value]="team.id" name="victor" [ngModel]="battle.result.victory" (ngModelChange)="judge($event)"
-            [disabled]="!editable">
+          <input *ngIf="resultMode" type="radio" [value]="team.id" name="victor" [ngModel]="battle.result.victory"
+            (ngModelChange)="judge($event)" [disabled]="!editable">
           <mat-card>
             <mat-card-title style="font-family: 'Splatfont';">
               {{ team.title }}

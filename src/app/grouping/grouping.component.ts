@@ -9,7 +9,7 @@ import { Team } from '../team/team';
 @Component({
   selector: 'app-grouping',
   templateUrl: './grouping.component.html',
-  styleUrls: ['./grouping.component.css']
+  styleUrls: ['./grouping.component.scss']
 })
 export class GroupingComponent implements OnInit {
   grouping: Grouping;
