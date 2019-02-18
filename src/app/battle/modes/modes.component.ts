@@ -4,7 +4,7 @@ import { FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-modes',
   templateUrl: './modes.component.html',
-  styleUrls: ['./modes.component.css']
+  styleUrls: ['./modes.component.scss']
 })
 export class ModesComponent {
   @Input() mode: string;

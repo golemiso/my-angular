@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MessageService } from '../message.service';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { MessageService } from '../message/message.service';
+import { Observable, of } from 'rxjs';
 import { Battle } from './battle';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from './../../environments/environment';
@@ -11,7 +10,9 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BattleService {
 
   private url = `${environment.apiUrl}/battles`;

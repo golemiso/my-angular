@@ -1,7 +1,8 @@
 <mat-horizontal-stepper *ngIf="grouping" [linear]>
   <mat-step label="Arrange teams">
     <div fxLayout="row wrap" fxLayoutAlign="start">
-      <app-team *ngFor="let team of grouping.teams" [team]="team" [teamDragDropEnabled]="false" [playerDragDropEnabled]="true"></app-team>
+      <app-team *ngFor="let team of grouping.teams" [team]="team" [teamDragDropEnabled]="false"
+        [playerDragDropEnabled]="true"></app-team>
     </div>
     <div>
       <button mat-button matStepperNext>Next</button>
@@ -9,7 +10,8 @@
   </mat-step>
   <mat-step label="Arrange battles">
     <div fxLayout="row wrap" fxLayoutAlign="start">
-      <app-team *ngFor="let team of grouping.teams" [team]="team" [teamDragDropEnabled]="true" [playerDragDropEnabled]="false"></app-team>
+      <app-team *ngFor="let team of grouping.teams" [team]="team" [teamDragDropEnabled]="true"
+        [playerDragDropEnabled]="false"></app-team>
     </div>
     <div id="dropZone" droppable [dropScope]="'team'" (onDrop)="onTeamDrop($event)">Drop teams here</div>
     <app-battles [battles]="battles"></app-battles>

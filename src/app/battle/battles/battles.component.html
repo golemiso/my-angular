@@ -1,0 +1,2 @@
+<app-battle *ngFor="let battle of battles" [battle]="battle" [resultMode]="false"
+  (deleteBattleRequest)="deleteBattle($event)"></app-battle>
