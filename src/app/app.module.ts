@@ -21,6 +21,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './ui/material/material.module';
 import { CompetitionComponent } from './competition/competition.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PlayerRankingsComponent } from './competition/player-rankings/player-rankings.component';
+import { CreateBattlesComponent } from './competition/create-battles/create-battles.component';
+import { BattleResultsComponent } from './competition/battle-results/battle-results.component';
+import { CompetitionDashboardComponent } from './competition/competition-dashboard/competition-dashboard.component';
+import { SettingComponent } from './setting/setting.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     PlayersComponent,
     RankingsComponent,
     CompetitionComponent,
-    DashboardComponent
+    DashboardComponent,
+    PlayerRankingsComponent,
+    CreateBattlesComponent,
+    BattleResultsComponent,
+    CompetitionDashboardComponent,
+    SettingComponent
   ],
   imports: [
     BrowserModule,

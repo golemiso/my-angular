@@ -7,6 +7,11 @@ import { ResultComponent } from './result/result.component';
 import { RankingsComponent } from './player/rankings/rankings.component';
 import { CompetitionComponent } from './competition/competition.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CreateBattlesComponent } from './competition/create-battles/create-battles.component';
+import { BattleResultsComponent } from './competition/battle-results/battle-results.component';
+import { PlayerRankingsComponent } from './competition/player-rankings/player-rankings.component';
+import { CompetitionDashboardComponent } from './competition/competition-dashboard/competition-dashboard.component';
+import { SettingComponent } from './setting/setting.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -14,21 +19,22 @@ const routes: Routes = [
     path: 'competition/:slug',
     component: CompetitionComponent,
     children: [
-      { path: '', component: CompetitionComponent },
-      { path: 'create_battles', component: RankingsComponent },
-      { path: 'battle_results', component: ResultComponent },
-      { path: 'player_rankings', component: RankingsComponent }
+      { path: '', component: CompetitionDashboardComponent },
+      { path: 'create_battles', component: CreateBattlesComponent },
+      { path: 'battle_results', component: BattleResultsComponent },
+      { path: 'player_rankings', component: PlayerRankingsComponent }
     ]
   },
   {
     path: 'setting',
+    component: SettingComponent,
     children: [
       { path: '', component: RankingsComponent },
       {
         path: 'players',
         children: [
           { path: '', component: PlayersComponent },
-          { path: 'new', component: PlayersComponent, outlet: 'popup' },
+          { path: 'add', component: PlayersComponent, outlet: 'popup' },
           { path: 'edit/:slug', component: PlayersComponent, outlet: 'popup' }
         ]
       },
@@ -36,7 +42,7 @@ const routes: Routes = [
         path: 'competitions',
         children: [
           { path: '', component: PlayersComponent },
-          { path: 'new', component: PlayersComponent, outlet: 'popup' },
+          { path: 'add', component: PlayersComponent, outlet: 'popup' },
           { path: 'edit/:slug', component: PlayersComponent, outlet: 'popup' }
         ]
       }
