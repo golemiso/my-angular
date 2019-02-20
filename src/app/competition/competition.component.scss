@@ -1,0 +1,21 @@
+div.toolbar-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+mat-sidenav-container {
+  flex: 1;
+  overflow: hidden;
+}
+
+mat-sidenav-content {
+  box-sizing: border-box;
+  padding: 20px;
+  height: 100%;
+  overflow: auto;
+}
