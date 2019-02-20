@@ -21,12 +21,17 @@ export class PlayersComponent implements OnInit {
       .subscribe(players => this.players = players);
   }
 
-  add(name: string) {
+  add(slug: string, name: string) {
+    slug = slug.trim();
     name = name.trim();
-    if (!name) { return; }
+    if (!slug || !name) { return; }
     const player = new Player();
+    player.slug = slug;
     player.name = name;
     this.service.addPlayer(player)
-      .subscribe(p => this.players.push(p));
+      .subscribe(id => {
+        player.id = id;
+        this.players.push(player)
+      });
   }
 }

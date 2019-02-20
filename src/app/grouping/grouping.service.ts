@@ -19,14 +19,15 @@ const httpOptions = {
 })
 export class GroupingService {
 
-  private url = `${environment.apiUrl}/rankings?rankBy=user`;
+  private rankingUrl = `${environment.apiUrl}/rankings?rankBy=user`;
+  private battleUrl = `${environment.apiUrl}/battles`;
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
 
   getGrouping(): Observable<Grouping> {
-    return this.http.get<PlayerRecord[]>(this.url, httpOptions).pipe(
+    return this.http.get<PlayerRecord[]>(this.rankingUrl, httpOptions).pipe(
       map(playerRecords => this.makeGroupsFromPlayerRecords(playerRecords)),
       tap(_ => this.log(`fetched grouping`)),
       catchError(this.handleError('getUserRankings', GROUPING))
@@ -63,7 +64,7 @@ export class GroupingService {
   }
 
   addBattle(battle: Battle): Observable<Battle> {
-    return this.http.post<Battle>('http://localhost:9000/battles', battle, httpOptions).pipe(
+    return this.http.post<Battle>(this.battleUrl, battle, httpOptions).pipe(
       tap((b: Battle) => this.log(`added battle w/ id=${b.id}`)),
       catchError(this.handleError<Battle>('addBattle'))
     );
@@ -104,18 +105,22 @@ export const GROUPING: Grouping = {
       players: [
         {
           id: '0',
+          slug: 'karate_bba',
           name: 'からてババアきゅぴ'
         },
         {
           id: '1',
+          slug: 'karate_bba',
           name: 'ごとう　れいか'
         },
         {
           id: '2',
+          slug: 'karate_bba',
           name: 'かに'
         },
         {
           id: '3',
+          slug: 'karate_bba',
           name: 'はんざわ　せれな'
         }
       ]
@@ -126,22 +131,27 @@ export const GROUPING: Grouping = {
       players: [
         {
           id: '4',
+          slug: 'karate_bba',
           name: 'Name 4'
         },
         {
           id: '5',
+          slug: 'karate_bba',
           name: 'Name 5'
         },
         {
           id: '6',
+          slug: 'karate_bba',
           name: 'Name 6'
         },
         {
           id: '7',
+          slug: 'karate_bba',
           name: 'Name 7'
         },
         {
           id: '8',
+          slug: 'karate_bba',
           name: 'Name 8'
         }
       ]
@@ -152,6 +162,7 @@ export const GROUPING: Grouping = {
       players: [
         {
           id: '0',
+          slug: 'karate_bba',
           name: 'Name 0'
         }
       ]

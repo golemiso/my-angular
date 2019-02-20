@@ -35,10 +35,10 @@ export class PlayerService {
     );
   }
 
-  addPlayer(player: Player): Observable<Player> {
-    return this.http.post<Player>(this.url, player, httpOptions).pipe(
-      tap((p: Player) => this.log(`added player w/ id=${p.id}`)),
-      catchError(this.handleError<Player>('addPlayer'))
+  addPlayer(player: Player): Observable<string> {
+    return this.http.post<string>(this.url, player, httpOptions).pipe(
+      tap((id: string) => this.log(`added player w/ id=${id}`)),
+      catchError(this.handleError<string>('addPlayer'))
     );
   }
 
