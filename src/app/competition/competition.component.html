@@ -3,15 +3,15 @@
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1 style="font-family: 'Splatfont';">Splatoon 2</h1>
+    <h1 style="font-family: 'Splatfont';">{{ competition.name }}</h1>
   </mat-toolbar>
   <mat-sidenav-container>
     <mat-sidenav #snav>
       <mat-nav-list>
-        <a mat-list-item routerLink="/players" (click)="snav.close()">プレイヤー</a>
-        <a mat-list-item routerLink="/groupings" (click)="snav.close()">チームぎめ</a>
-        <a mat-list-item routerLink="/results" (click)="snav.close()">対戦結果</a>
-        <a mat-list-item routerLink="/rankings" (click)="snav.close()">ランキング</a>
+        <a mat-list-item routerLink="." (click)="snav.close()">Dashboard</a>
+        <a mat-list-item routerLink="create_battles" (click)="snav.close()">チームぎめ</a>
+        <a mat-list-item routerLink="battle_results" (click)="snav.close()">対戦結果</a>
+        <a mat-list-item routerLink="player_rankings" (click)="snav.close()">ランキング</a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>

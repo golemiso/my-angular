@@ -3,6 +3,7 @@ import { CompetitionService } from 'src/app/service/competition/competition.serv
 import { Competition } from 'src/app/model/competition';
 import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
+import { range } from 'rxjs';
 
 @Component({
   selector: 'app-competitions',
@@ -53,7 +54,6 @@ export class CompetitionDialogEntryComponent {
 
   openAddDialog(): void {
     const dialogRef = this.dialog.open(CompetitionDialog, {
-      width: '250px',
       data: new Competition()
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -68,6 +68,11 @@ export class CompetitionDialogEntryComponent {
 })
 export class CompetitionDialog {
   competition: Competition;
+
+  private range = (begin: number, end: number) => ([...Array(end - begin)].map((_, i) => (begin + i)));
+
+  hours: number[] = Array.from(new Array(24)).map((v, i) => i);
+  minutes: number[] = Array.from(new Array(60)).map((v, i) => i);
 
   constructor(
     public dialogRef: MatDialogRef<CompetitionDialog>,
