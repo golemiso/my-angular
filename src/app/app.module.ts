@@ -15,7 +15,7 @@ import { TeamComponent } from './team/team.component';
 import { MessageComponent } from './message/message.component';
 import { BattlesComponent } from './battle/battles/battles.component';
 import { ModesComponent } from './battle/modes/modes.component';
-import { PlayersComponent } from './player/players/players.component';
+import { PlayersComponent } from './setting/players/players.component';
 import { RankingsComponent } from './player/rankings/rankings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './ui/material/material.module';
@@ -26,6 +26,7 @@ import { CreateBattlesComponent } from './competition/create-battles/create-batt
 import { BattleResultsComponent } from './competition/battle-results/battle-results.component';
 import { CompetitionDashboardComponent } from './competition/competition-dashboard/competition-dashboard.component';
 import { SettingComponent } from './setting/setting.component';
+import { CompetitionsComponent, CompetitionDialogEntryComponent, CompetitionDialog } from './setting/competitions/competitions.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,13 @@ import { SettingComponent } from './setting/setting.component';
     CreateBattlesComponent,
     BattleResultsComponent,
     CompetitionDashboardComponent,
-    SettingComponent
+    SettingComponent,
+    CompetitionsComponent,
+    CompetitionDialogEntryComponent,
+    CompetitionDialog
+  ],
+  entryComponents: [
+    CompetitionDialog
   ],
   imports: [
     BrowserModule,

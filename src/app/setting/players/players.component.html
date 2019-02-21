@@ -1,3 +1,15 @@
-<p>
-  players works!
-</p>
+<mat-list>
+  <mat-list-item *ngFor="let player of players">
+    <p class="player_name">{{player.name}} @{{player.slug}}</p>
+  </mat-list-item>
+</mat-list>
+
+<mat-form-field>
+  <input matInput placeholder="Player ID" #playerSlug>
+</mat-form-field>
+<mat-form-field>
+  <input matInput placeholder="Player Name" #playerName>
+</mat-form-field>
+<button mat-button (click)="add(playerSlug.value, playerName.value); playerSlug.value=''; playerName.value=''">
+  add
+</button>

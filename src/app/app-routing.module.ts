@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { PlayersComponent } from './player/players/players.component';
 import { GroupingComponent } from './grouping/grouping.component';
 import { ResultComponent } from './result/result.component';
 import { RankingsComponent } from './player/rankings/rankings.component';
@@ -12,6 +11,8 @@ import { BattleResultsComponent } from './competition/battle-results/battle-resu
 import { PlayerRankingsComponent } from './competition/player-rankings/player-rankings.component';
 import { CompetitionDashboardComponent } from './competition/competition-dashboard/competition-dashboard.component';
 import { SettingComponent } from './setting/setting.component';
+import { CompetitionsComponent, CompetitionDialogEntryComponent } from './setting/competitions/competitions.component';
+import { PlayersComponent } from './setting/players/players.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -32,18 +33,18 @@ const routes: Routes = [
       { path: '', component: RankingsComponent },
       {
         path: 'players',
+        component: PlayersComponent,
         children: [
-          { path: '', component: PlayersComponent },
-          { path: 'add', component: PlayersComponent, outlet: 'popup' },
-          { path: 'edit/:slug', component: PlayersComponent, outlet: 'popup' }
+          { path: 'add', component: PlayersComponent },
+          { path: 'edit/:slug', component: PlayersComponent }
         ]
       },
       {
         path: 'competitions',
+        component: CompetitionsComponent,
         children: [
-          { path: '', component: PlayersComponent },
-          { path: 'add', component: PlayersComponent, outlet: 'popup' },
-          { path: 'edit/:slug', component: PlayersComponent, outlet: 'popup' }
+          { path: 'add', component: CompetitionDialogEntryComponent },
+          { path: 'edit/:slug', component: CompetitionDialogEntryComponent }
         ]
       }
     ]
