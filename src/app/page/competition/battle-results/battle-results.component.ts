@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SelectedCompetition } from '../competition.component';
 
 @Component({
   selector: 'app-battle-results',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BattleResultsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private selected: SelectedCompetition) { }
 
   ngOnInit() {
   }

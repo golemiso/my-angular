@@ -3,3 +3,8 @@ export class Player {
     slug: string;
     name: string;
 }
+
+export class PlayerRanking {
+    rank: number;
+    player: Player;
+}

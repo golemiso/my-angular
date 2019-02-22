@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Battle } from '../battle';
+import { Battle } from 'src/app/model/battle';
 
 @Component({
   selector: 'app-battles',

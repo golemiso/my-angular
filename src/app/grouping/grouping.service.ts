@@ -7,7 +7,7 @@ import { Grouping } from './grouping';
 import { MessageService } from '../message/message.service';
 import { PlayerRecord } from '../player/player';
 import { Team } from '../team/team';
-import { Battle } from '../battle/battle';
+import { Battle } from '../model/battle';
 import { environment } from '../../environments/environment';
 
 const httpOptions = {

@@ -4,15 +4,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { GroupingComponent } from './grouping/grouping.component';
 import { ResultComponent } from './result/result.component';
 import { RankingsComponent } from './player/rankings/rankings.component';
-import { CompetitionComponent } from './competition/competition.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { CreateBattlesComponent } from './competition/create-battles/create-battles.component';
-import { BattleResultsComponent } from './competition/battle-results/battle-results.component';
-import { PlayerRankingsComponent } from './competition/player-rankings/player-rankings.component';
-import { CompetitionDashboardComponent } from './competition/competition-dashboard/competition-dashboard.component';
-import { SettingComponent } from './setting/setting.component';
-import { CompetitionsComponent, CompetitionDialogEntryComponent } from './setting/competitions/competitions.component';
-import { PlayersComponent } from './setting/players/players.component';
+import { CompetitionComponent } from './page/competition/competition.component';
+import { DashboardComponent } from './page/dashboard/dashboard.component';
+import { CreateBattlesComponent } from './page/competition/create-battles/create-battles.component';
+import { BattleResultsComponent } from './page/competition/battle-results/battle-results.component';
+import { PlayerRankingsComponent } from './page/competition/player-rankings/player-rankings.component';
+import { CompetitionDashboardComponent } from './page/competition/competition-dashboard/competition-dashboard.component';
+import { SettingComponent } from './page/setting/setting.component';
+import { CompetitionsComponent, CompetitionDialogEntryComponent } from './page/setting/competitions/competitions.component';
+import { PlayersComponent } from './page/setting/players/players.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },

@@ -1,6 +1,6 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
-import { Battle, BattleResult } from './battle';
 import { BattleService } from './battle.service';
+import { Battle } from 'src/app/model/battle';
 
 @Component({
   selector: 'app-battle',
@@ -21,6 +21,7 @@ export class BattleComponent implements OnInit {
       return;
     }
     if (this.battle.result) {
+
       this.battle.teams.map(t => {
         if (t.id === this.battle.result.victory) {
           t.title = 'Win';

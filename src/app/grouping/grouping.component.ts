@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupingService } from './grouping.service';
 import { Grouping } from './grouping';
-import { Battle } from '../battle/battle';
+import { Battle, Competitors } from 'src/app/model/battle';
 import { TeamComponent } from '../team/team.component';
 import { DropEvent } from 'ng-drag-drop/src/shared/drop-event.model';
-import { Team } from '../team/team';
+import { Team } from 'src/app/model/team';
 
 @Component({
   selector: 'app-grouping',
@@ -33,8 +33,10 @@ export class GroupingComponent implements OnInit {
 
     if (this.tempTeams.length === 2) {
       const battle = new Battle;
-      battle.teams = this.tempTeams;
-      battle.title = battle.teams[0].title + ' vs ' + battle.teams[1].title;
+      battle.competitors = new Competitors
+      battle.competitors.left = this.tempTeams[0];
+      battle.competitors.right = this.tempTeams[1];
+      battle.name = battle.competitors.left.name + ' vs ' + battle.competitors.right.name;
       this.battles.push(battle);
       this.tempTeams = [];
     }

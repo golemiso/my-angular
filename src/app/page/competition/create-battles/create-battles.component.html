@@ -1,0 +1,52 @@
+<mat-horizontal-stepper [linear]>
+  <mat-step label="Arrange teams">
+    <div fxLayout="row wrap" fxLayoutAlign="start" cdkDropListGroup>
+      <mat-card fxFlex="200px" *ngFor="let team of teams">
+        <mat-card-title style="font-family: 'Splatfont';">
+          <mat-icon>drag_handle</mat-icon>{{ team.name }}
+        </mat-card-title>
+        <mat-card-content>
+          <mat-list style="padding-top: 0;" cdkDropList [cdkDropListData]="team.players"
+            (cdkDropListDropped)="onPlayerDrop($event)">
+            <mat-list-item *ngFor="let player of team.players" style="font-family: 'Splatfont 2';" cdkDrag>
+              <mat-icon cdkDragHandle>drag_handle</mat-icon>{{ player.name }}
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Arrange battles">
+    <div fxLayout="row wrap" fxLayoutAlign="start">
+      <mat-card fxFlex="200px" *ngFor="let team of teams" cdkDropList [cdkDropListConnectedTo]="[dropHere]"
+        [cdkDropListData]="teams" cdkDrag>
+        <mat-card-title style="font-family: 'Splatfont';">
+          <mat-icon>drag_handle</mat-icon>{{ team.name }}
+        </mat-card-title>
+        <mat-card-content>
+          <mat-list style="padding-top: 0;">
+            <mat-list-item *ngFor="let player of team.players" style="font-family: 'Splatfont 2';">
+              {{ player.name }}
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div cdkDropList #dropHere="cdkDropList" (cdkDropListDropped)="onTeamDrop($event)">Drop teams here</div>
+    <app-battles [battles]="battles"></app-battles>
+    <div>
+      <button mat-button matStepperPrevious>Previous</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Confirm">
+    <app-battles [battles]="battles"></app-battles>
+    <div>
+      <button mat-button matStepperPrevious>Previous</button>
+      <button mat-button (click)="addBattles($event)">Done</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
