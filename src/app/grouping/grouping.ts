@@ -1,4 +1,4 @@
-import { Team } from '../team/team';
+import { Team } from '../model/team';
 
 export class Grouping {
   id: string;

@@ -3,15 +3,27 @@
     <form>
       <app-modes [(mode)]="battle.mode" [editable]="editable"></app-modes>
       <div fxLayout="row wrap" fxLayoutAlign="start">
-        <label *ngFor="let team = battle.competitors.left" fxFlex="200px">
-          <input *ngIf="resultMode" type="radio" [value]="team.id" name="victor" [ngModel]="battle.result.victory"
-            (ngModelChange)="judge($event)" [disabled]="!editable">
+        <label fxFlex="200px">
+          <input *ngIf="resultMode" type="radio" value="victory_left" name="victor" [ngModel]="battle.result"
+            (ngModelChange)="onResultChange($event)" [disabled]="!editable">
           <mat-card>
             <mat-card-title style="font-family: 'Splatfont';">
-              {{ team.title }}
+              {{ battle.result }}
             </mat-card-title>
             <mat-list style="padding-top: 0;">
-              <app-player *ngFor="let player of team.players" [player]="player"></app-player>
+              <app-player *ngFor="let player of battle.competitors.left.players" [player]="player"></app-player>
+            </mat-list>
+          </mat-card>
+        </label>
+        <label fxFlex="200px">
+          <input *ngIf="resultMode" type="radio" value="victory_right" name="victor" [ngModel]="battle.result"
+            (ngModelChange)="onResultChange($event)" [disabled]="!editable">
+          <mat-card>
+            <mat-card-title style="font-family: 'Splatfont';">
+              {{ battle.result }}
+            </mat-card-title>
+            <mat-list style="padding-top: 0;">
+              <app-player *ngFor="let player of battle.competitors.right.players" [player]="player"></app-player>
             </mat-list>
           </mat-card>
         </label>

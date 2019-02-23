@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Battle } from '../battle/battle';
-import { BattleService } from '../battle/battle.service';
+import { Battle } from '../model/battle';
+import { BattleService } from '../component/battle/battle.service';
 
 @Component({
   selector: 'app-result',

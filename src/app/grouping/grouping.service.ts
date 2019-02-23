@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 import { Grouping } from './grouping';
 import { MessageService } from '../message/message.service';
 import { PlayerRecord } from '../player/player';
-import { Team } from '../team/team';
+import { Team } from '../model/team';
 import { Battle } from '../model/battle';
 import { environment } from '../../environments/environment';
 
@@ -42,7 +42,7 @@ export class GroupingService {
     for (let i = 0; i < into; i++) {
       const team = new Team;
       team.players = [];
-      team.title = 'チーム' + (i + 1);
+      team.name = 'チーム' + (i + 1);
       grouping.teams.push(team);
     }
 
@@ -101,7 +101,8 @@ export const GROUPING: Grouping = {
   teams: [
     {
       id: '0',
-      title: 'team1',
+      slug: '',
+      name: 'team1',
       players: [
         {
           id: '0',
@@ -127,7 +128,8 @@ export const GROUPING: Grouping = {
     },
     {
       id: '1',
-      title: 'team2',
+      slug: '',
+      name: 'team2',
       players: [
         {
           id: '4',
@@ -158,7 +160,8 @@ export const GROUPING: Grouping = {
     },
     {
       id: '2',
-      title: 'team3',
+      slug: '',
+      name: 'team3',
       players: [
         {
           id: '0',

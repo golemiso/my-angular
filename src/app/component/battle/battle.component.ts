@@ -1,6 +1,6 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
-import { BattleService } from './battle.service';
 import { Battle } from 'src/app/model/battle';
+import { BattleService } from 'src/app/service/battle/battle.service';
 
 @Component({
   selector: 'app-battle',
@@ -20,31 +20,17 @@ export class BattleComponent implements OnInit {
       this.editable = true;
       return;
     }
-    if (this.battle.result) {
-
-      this.battle.teams.map(t => {
-        if (t.id === this.battle.result.victory) {
-          t.title = 'Win';
-        } else {
-          t.title = 'Lose';
-        }
-      });
-    } else {
+    if (!this.battle.result) {
       this.editable = true;
-      this.battle.result = new BattleResult;
     }
   }
 
-  judge(victory: string) {
-    this.battle.teams.map(t => {
-      if (victory === t.id) {
-        this.battle.result.victory = t.id;
-      } else {
-        this.battle.result.defeat = t.id;
-      }
-    });
+  onResultChange(result: string) {
+    this.battle.result = result;
+
+    window.alert(result);
     this.ngOnInit();
-    this.service.updateBattle(this.battle).subscribe();
+    this.service.changeResult(this.battle).subscribe();
   }
 
   editButton() {
@@ -52,13 +38,13 @@ export class BattleComponent implements OnInit {
   }
   deleteButton() {
     if (this.battle.id) {
-      this.service.removeBattle(this.battle).subscribe();
+      // this.service.remove(this.battle).subscribe();
     }
     this.deleteBattleRequest.emit(this.battle);
     this.editable = false;
   }
   okButton() {
-    this.service.updateBattle(this.battle).subscribe();
+    // this.service.change(this.battle).subscribe();
     this.editable = false;
   }
 }

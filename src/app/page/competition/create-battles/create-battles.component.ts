@@ -5,6 +5,7 @@ import { Team } from 'src/app/model/team';
 import { PlayerRankingsService } from 'src/app/service/player/player-rankings.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Battle, Competitors } from 'src/app/model/battle';
+import { BattleService } from 'src/app/service/battle/battle.service';
 
 class TeamView {
   name: string;
@@ -23,7 +24,8 @@ export class CreateBattlesComponent implements OnInit {
 
   constructor(
     private selected: SelectedCompetition,
-    private playerRankingsService: PlayerRankingsService) {
+    private playerRankingsService: PlayerRankingsService,
+    private battleService: BattleService) {
     this.playerRankingsService.getBy(this.selected.competition).subscribe(p => this.teams = this.makeTeamsFromPlayerRankings(p));
   }
 
@@ -69,15 +71,12 @@ export class CreateBattlesComponent implements OnInit {
     }
   }
 
-  onTeamDrop(event: CdkDragDrop<Team[]>) {
-    this.tempTeams.push(event.previousContainer.data[event.previousIndex]);
-
-
-
-    window.alert(event.previousContainer.data[event.previousIndex]);
+  onTeamDrop(event: CdkDragDrop<Team>) {
+    this.tempTeams.push(event.item.data);
 
     if (this.tempTeams.length === 2) {
       const battle = new Battle;
+      battle.competition = this.selected.competition;
       battle.competitors = new Competitors;
       battle.competitors.left = this.tempTeams[0];
       battle.competitors.right = this.tempTeams[1];
@@ -85,5 +84,9 @@ export class CreateBattlesComponent implements OnInit {
       this.battles.push(battle);
       this.tempTeams = [];
     }
+  }
+
+  addBattles(e: Event) {
+    this.battles.forEach(battle => this.battleService.add(battle).subscribe(battleId => battle.id = battleId));
   }
 }

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Battle } from '../battle/battle';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from '../message/message.service';
 import { Observable, of } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { Battle } from '../model/battle';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

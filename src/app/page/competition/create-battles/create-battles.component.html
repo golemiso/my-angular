@@ -22,7 +22,7 @@
   <mat-step label="Arrange battles">
     <div fxLayout="row wrap" fxLayoutAlign="start">
       <mat-card fxFlex="200px" *ngFor="let team of teams" cdkDropList [cdkDropListConnectedTo]="[dropHere]"
-        [cdkDropListData]="teams" cdkDrag>
+        [cdkDragData]="team" cdkDrag>
         <mat-card-title style="font-family: 'Splatfont';">
           <mat-icon>drag_handle</mat-icon>{{ team.name }}
         </mat-card-title>

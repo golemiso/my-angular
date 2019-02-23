@@ -1,3 +1,2 @@
-<p>
-  battle-results works!
-</p>
+<app-battle *ngFor="let battle of battles" [battle]="battle" [resultMode]="true"
+  (deleteBattleRequest)="deleteBattle($event)"></app-battle>

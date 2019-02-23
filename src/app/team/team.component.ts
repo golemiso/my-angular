@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Team } from './team';
 import { DropEvent } from 'ng-drag-drop/src/shared/drop-event.model';
 import { PlayerComponent } from '../player/player.component';
 import { Player } from '../player/player';
+import { Team } from '../model/team';
 
 @Component({
   selector: 'app-team',
