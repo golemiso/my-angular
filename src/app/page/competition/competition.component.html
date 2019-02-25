@@ -3,7 +3,7 @@
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1 style="font-family: 'Splatfont';">{{ selected.competition.name }}</h1>
+    <h1 style="font-family: 'Splatfont';">{{ context.competition?.name }}</h1>
   </mat-toolbar>
   <mat-sidenav-container>
     <mat-sidenav #snav>
@@ -15,7 +15,7 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <router-outlet></router-outlet>
+      <router-outlet *ngIf="context.competition"></router-outlet>
       <app-message></app-message>
     </mat-sidenav-content>
   </mat-sidenav-container>

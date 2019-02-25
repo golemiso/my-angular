@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectedCompetition } from '../competition.component';
+import { CompetitionContext } from '../competition.component';
 import { PlayerRanking, Player } from 'src/app/model/player';
 import { Team } from 'src/app/model/team';
 import { PlayerRankingsService } from 'src/app/service/player/player-rankings.service';
@@ -23,10 +23,10 @@ export class CreateBattlesComponent implements OnInit {
   tempTeams: Team[] = [];
 
   constructor(
-    private selected: SelectedCompetition,
+    private context: CompetitionContext,
     private playerRankingsService: PlayerRankingsService,
     private battleService: BattleService) {
-    this.playerRankingsService.getBy(this.selected.competition).subscribe(p => this.teams = this.makeTeamsFromPlayerRankings(p));
+    this.playerRankingsService.getBy(this.context.competition).subscribe(p => this.teams = this.makeTeamsFromPlayerRankings(p));
   }
 
   ngOnInit() {
@@ -76,7 +76,7 @@ export class CreateBattlesComponent implements OnInit {
 
     if (this.tempTeams.length === 2) {
       const battle = new Battle;
-      battle.competition = this.selected.competition;
+      battle.competition = this.context.competition;
       battle.competitors = new Competitors;
       battle.competitors.left = this.tempTeams[0];
       battle.competitors.right = this.tempTeams[1];

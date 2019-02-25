@@ -8,18 +8,14 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CompetitionService {
-  competitions: Observable<Competition[]>;
 
-  constructor(private httpService: HttpService) {
-    this.getAll();
-  }
+  constructor(private httpService: HttpService) { }
 
   getAll(): Observable<Competition[]> {
-    this.competitions = this.httpService.get<Competition[]>('/competitions');
-    return this.competitions;
+    return this.httpService.get<Competition[]>('/competitions');
   }
   getBy(slug: string): Observable<Competition> {
-    return this.competitions.pipe(
+    return this.getAll().pipe(
       map(c => c.find(a => a.slug == slug))
     );
   }

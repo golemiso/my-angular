@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
-export class SelectedCompetition {
+export class CompetitionContext {
   competition: Competition;
 }
 
@@ -18,13 +18,13 @@ export class SelectedCompetition {
 export class CompetitionComponent implements OnInit {
 
   constructor(
+    public context: CompetitionContext,
     private service: CompetitionService,
-    private route: ActivatedRoute,
-    public selected: SelectedCompetition) {
-    const slug = this.route.snapshot.paramMap.get('slug');
-    this.service.getBy(slug).subscribe(c => this.selected.competition = c);
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    const slug = this.route.snapshot.paramMap.get('slug');
+    this.service.getBy(slug).subscribe(c => this.context.competition = c);
   }
 }

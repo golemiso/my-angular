@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectedCompetition } from '../competition.component';
+import { CompetitionContext } from '../competition.component';
 import { BattleService } from 'src/app/service/battle/battle.service';
 import { Battle } from 'src/app/model/battle';
 
@@ -12,7 +12,7 @@ export class BattleResultsComponent implements OnInit {
   battles: Battle[];
 
   constructor(
-    private selected: SelectedCompetition,
+    private context: CompetitionContext,
     private battleService: BattleService) { }
 
   ngOnInit() {
@@ -20,7 +20,7 @@ export class BattleResultsComponent implements OnInit {
   }
 
   getResults() {
-    this.battleService.getBy(this.selected.competition).subscribe(b => this.battles = b);
+    this.battleService.getBy(this.context.competition).subscribe(b => this.battles = b);
   }
 
   deleteBattle(battle: Battle) {

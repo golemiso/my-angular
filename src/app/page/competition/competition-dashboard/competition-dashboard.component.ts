@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectedCompetition } from '../competition.component';
+import { CompetitionContext } from '../competition.component';
 
 @Component({
   selector: 'app-competition-dashboard',
@@ -8,7 +8,7 @@ import { SelectedCompetition } from '../competition.component';
 })
 export class CompetitionDashboardComponent implements OnInit {
 
-  constructor(private selected: SelectedCompetition) { }
+  constructor(private context: CompetitionContext) { }
 
   ngOnInit() {
   }

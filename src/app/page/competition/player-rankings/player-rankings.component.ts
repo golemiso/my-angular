@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectedCompetition } from '../competition.component';
+import { CompetitionContext } from '../competition.component';
 import { PlayerRankingsService } from 'src/app/service/player/player-rankings.service';
 import { PlayerRanking } from 'src/app/model/player';
 
@@ -13,10 +13,10 @@ export class PlayerRankingsComponent implements OnInit {
 
   constructor(
     private service: PlayerRankingsService,
-    private selected: SelectedCompetition) { }
+    private context: CompetitionContext) { }
 
   ngOnInit() {
-    this.service.getBy(this.selected.competition).subscribe(p => this.playerRankings = p);
+    this.service.getBy(this.context.competition).subscribe(p => this.playerRankings = p);
   }
 
 }
