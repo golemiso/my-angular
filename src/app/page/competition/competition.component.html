@@ -5,6 +5,12 @@
     </button>
     <h1 style="font-family: 'Splatfont';">{{ context.competition?.name }}</h1>
   </mat-toolbar>
+  <nav mat-tab-nav-bar backgroundColor="primary">
+    <a mat-tab-link routerLink=".">Dashboard</a>
+    <a mat-tab-link routerLink="create_battles">チームぎめ</a>
+    <a mat-tab-link routerLink="battle_results">対戦結果</a>
+    <a mat-tab-link routerLink="player_rankings">ランキング</a>
+  </nav>
   <mat-sidenav-container>
     <mat-sidenav #snav>
       <mat-nav-list>

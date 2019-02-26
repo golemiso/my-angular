@@ -4,6 +4,7 @@ import { Competition } from 'src/app/model/competition';
 import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
 import { range } from 'rxjs';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-competitions',
@@ -74,9 +75,13 @@ export class CompetitionDialog {
   hours: number[] = Array.from(new Array(24)).map((v, i) => i);
   minutes: number[] = Array.from(new Array(60)).map((v, i) => i);
 
+  start: Date;
+
   constructor(
     public dialogRef: MatDialogRef<CompetitionDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Competition) {
     this.competition = data;
+    this.competition.schedule.start = new Date(this.competition.schedule.start);
+    this.competition.schedule.end = new Date(this.competition.schedule.end);
   }
 }
