@@ -5,12 +5,20 @@
     </button>
     <h1 style="font-family: 'Splatfont';">{{ context.competition?.name }}</h1>
   </mat-toolbar>
-  <nav mat-tab-nav-bar backgroundColor="primary">
+
+  <app-router-tab>
+    <app-router-tab-item routerLink="." label="Dashboard"></app-router-tab-item>
+    <app-router-tab-item routerLink="create_battles" label="チームぎめ"></app-router-tab-item>
+    <app-router-tab-item routerLink="battle_results" label="対戦結果"></app-router-tab-item>
+    <app-router-tab-item routerLink="player_rankings" label="ランキング" [disabled]="true"></app-router-tab-item>
+  </app-router-tab>
+
+  <!-- <nav mat-tab-nav-bar backgroundColor="primary">
     <a mat-tab-link routerLink=".">Dashboard</a>
     <a mat-tab-link routerLink="create_battles">チームぎめ</a>
     <a mat-tab-link routerLink="battle_results">対戦結果</a>
     <a mat-tab-link routerLink="player_rankings">ランキング</a>
-  </nav>
+  </nav> -->
   <mat-sidenav-container>
     <mat-sidenav #snav>
       <mat-nav-list>

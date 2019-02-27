@@ -27,6 +27,7 @@ import { BattleResultsComponent } from './page/competition/battle-results/battle
 import { CompetitionDashboardComponent } from './page/competition/competition-dashboard/competition-dashboard.component';
 import { SettingComponent } from './page/setting/setting.component';
 import { CompetitionsComponent, CompetitionDialogEntryComponent, CompetitionDialog } from './page/setting/competitions/competitions.component';
+import { RouterTabModule } from './module/router-tab/router-tab.module';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { CompetitionsComponent, CompetitionDialogEntryComponent, CompetitionDial
     MaterialModule,
     NgDragDropModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterTabModule
   ],
   providers: [],
   bootstrap: [AppComponent]
