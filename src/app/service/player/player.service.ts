@@ -10,9 +10,7 @@ import { Id } from 'src/app/model/id';
 })
 export class PlayerService {
 
-  constructor(private httpService: HttpService) {
-    this.getAll();
-  }
+  constructor(private httpService: HttpService) { }
 
   getAll(): Observable<Player[]> {
     return this.httpService.get<Player[]>('/players');

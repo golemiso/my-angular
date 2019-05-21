@@ -11,9 +11,7 @@ import { flatMap } from 'rxjs/operators';
 })
 export class BattleService {
 
-  constructor(
-    private httpService: HttpService,
-    private teamService: TeamService) { }
+  constructor(private httpService: HttpService) { }
 
   getBy(competition: Competition): Observable<Battle[]> {
     return this.httpService.get<Battle[]>(`/competitions/${competition.id}/battle-histories`);
