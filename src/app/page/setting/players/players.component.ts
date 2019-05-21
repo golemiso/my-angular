@@ -28,7 +28,7 @@ export class PlayersComponent implements OnInit {
     player.slug = slug;
     player.name = name;
     this.service.add(player).subscribe(id => {
-      player.id = id;
+      player.id = id.id;
       this.players.push(player)
     });
   }

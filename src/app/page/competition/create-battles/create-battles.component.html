@@ -1,14 +1,14 @@
 <mat-horizontal-stepper [linear]>
   <mat-step label="Arrange teams">
     <div fxLayout="row wrap" fxLayoutAlign="start" cdkDropListGroup>
-      <mat-card fxFlex="200px" *ngFor="let team of teams">
+      <mat-card fxFlex="200px" *ngFor="let competitor of competitors">
         <mat-card-title style="font-family: 'Splatfont';">
-          <mat-icon>drag_handle</mat-icon>{{ team.name }}
+          <mat-icon>drag_handle</mat-icon>
         </mat-card-title>
         <mat-card-content>
-          <mat-list style="padding-top: 0;" cdkDropList [cdkDropListData]="team.players"
+          <mat-list style="padding-top: 0;" cdkDropList [cdkDropListData]="competitor.players"
             (cdkDropListDropped)="onPlayerDrop($event)">
-            <mat-list-item *ngFor="let player of team.players" style="font-family: 'Splatfont 2';" cdkDrag>
+            <mat-list-item *ngFor="let player of competitor.players" style="font-family: 'Splatfont 2';" cdkDrag>
               <mat-icon cdkDragHandle>drag_handle</mat-icon>{{ player.name }}
             </mat-list-item>
           </mat-list>
@@ -35,7 +35,7 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <div cdkDropList #dropHere="cdkDropList" (cdkDropListDropped)="onTeamDrop($event)">Drop teams here</div>
+    <div cdkDropList #dropHere="cdkDropList" (cdkDropListDropped)="onCompetitorsDrop($event)">Drop teams here</div>
     <app-battles [battles]="battles"></app-battles>
     <div>
       <button mat-button matStepperPrevious>Previous</button>

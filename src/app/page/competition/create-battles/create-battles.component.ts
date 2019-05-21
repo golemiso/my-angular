@@ -1,16 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CompetitionContext } from '../competition.component';
-import { PlayerRanking, Player } from 'src/app/model/player';
-import { Team } from 'src/app/model/team';
-import { PlayerRankingsService } from 'src/app/service/player/player-rankings.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Battle, Competitors } from 'src/app/model/battle';
+import { Battle, Competitors, Mode, RankBy } from 'src/app/model/battle';
 import { BattleService } from 'src/app/service/battle/battle.service';
-
-class TeamView {
-  name: string;
-  players: Player[];
-}
 
 @Component({
   selector: 'app-create-battles',
@@ -18,46 +10,21 @@ class TeamView {
   styleUrls: ['./create-battles.component.scss']
 })
 export class CreateBattlesComponent implements OnInit {
-  teams: Team[];
+  modes: Mode[];
+  rankBy: RankBy[] = [{ value: 'mode_scores' }, { value: 'entire_scores' }]
+  competitors: Competitors[];
+  tempCompetitors: Competitors[];
   battles: Battle[] = [];
-  tempTeams: Team[] = [];
+
 
   constructor(
     private context: CompetitionContext,
-    private playerRankingsService: PlayerRankingsService,
-    private battleService: BattleService) {
-    this.playerRankingsService.getBy(this.context.competition).subscribe(p => this.teams = this.makeTeamsFromPlayerRankings(p));
-  }
+    private battleService: BattleService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  private makeTeamsFromPlayerRankings(playerRecords: PlayerRanking[], into: number = 2, playersPerTeam: number = 4): Team[] {
-    const count = playerRecords.length;
-    const teams = [];
-
-    for (let i = 0; i < into; i++) {
-      const team = new Team;
-      team.players = [];
-      team.name = 'チーム' + (i + 1);
-      teams.push(team);
-    }
-
-    for (let i = 0; i < into * playersPerTeam && i < count; i++) {
-      const q = Math.floor(i / into);
-      const r = i % into;
-
-      switch (q % 2) {
-        case 0: // even
-          teams[r].players.push(playerRecords[i].player);
-          break;
-        case 1: // odd
-          teams[into - 1 - r].players.push(playerRecords[i].player);
-          break;
-      }
-    }
-
-    return teams;
+  fetchNewGroups(mode: Mode, rankBy: RankBy) {
+    this.battleService.getNewGroups(this.context.competition, mode, rankBy).subscribe(c => this.competitors = c);
   }
 
   onPlayerDrop(event: CdkDragDrop<string[]>) {
@@ -71,18 +38,14 @@ export class CreateBattlesComponent implements OnInit {
     }
   }
 
-  onTeamDrop(event: CdkDragDrop<Team>) {
-    this.tempTeams.push(event.item.data);
+  onCompetitorsDrop(event: CdkDragDrop<Competitors>) {
+    this.tempCompetitors.push(event.item.data);
 
-    if (this.tempTeams.length === 2) {
+    if (this.tempCompetitors.length === 2) {
       const battle = new Battle;
-      battle.competition = this.context.competition;
-      battle.competitors = new Competitors;
-      battle.competitors.left = this.tempTeams[0];
-      battle.competitors.right = this.tempTeams[1];
-      battle.name = battle.competitors.left.name + ' vs ' + battle.competitors.right.name;
+      battle.competitors = this.tempCompetitors;
       this.battles.push(battle);
-      this.tempTeams = [];
+      this.tempCompetitors = [];
     }
   }
 

@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from '../message/message.service';
 import { environment } from '../../environments/environment';
+import { HttpParams } from '@angular/common/http';
+import { HttpParamsOptions } from '@angular/common/http/src/params';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,8 +17,13 @@ const httpOptions = {
 export class HttpService {
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
-  get<T>(path: string): Observable<T> {
-    return this.http.get<T>(environment.apiUrl + path, httpOptions)
+  createParams(hash: Object): HttpParams {
+    const paramsOptions = <HttpParamsOptions>{ fromObject: hash };
+    return new HttpParams(paramsOptions);
+  }
+
+  get<T>(path: string, params: HttpParams = null): Observable<T> {
+    return this.http.get<T>(environment.apiUrl + path, { headers: httpOptions.headers, params: params })
       .pipe(
         catchError(this.handleError)
       );

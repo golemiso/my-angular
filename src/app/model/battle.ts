@@ -1,16 +1,32 @@
 import { Team } from './team';
 import { Competition } from './competition';
+import { Player } from './player';
 
 export class Battle {
     id: string;
-    name: string;
-    competition: Competition;
     mode: string;
-    competitors: Competitors;
+    competitors: Competitors[];
     result: string;
 }
 
 export class Competitors {
-    left: Team;
-    right: Team;
+    id: string;
+    players: Player[];
+    result: string;
+}
+
+export class Result {
+    id: string;
+    name: string;
+    point: number;
+}
+
+export class Mode {
+    id: string;
+    slug: string;
+    name: string;
+}
+
+export class RankBy {
+    value: string;
 }

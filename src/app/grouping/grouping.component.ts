@@ -31,15 +31,6 @@ export class GroupingComponent implements OnInit {
     const teamComponent = e.dragData as TeamComponent;
     this.tempTeams.push(teamComponent.team);
 
-    if (this.tempTeams.length === 2) {
-      const battle = new Battle;
-      battle.competitors = new Competitors
-      battle.competitors.left = this.tempTeams[0];
-      battle.competitors.right = this.tempTeams[1];
-      battle.name = battle.competitors.left.name + ' vs ' + battle.competitors.right.name;
-      this.battles.push(battle);
-      this.tempTeams = [];
-    }
   }
 
   addBattles(e: Event) {

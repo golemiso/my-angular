@@ -2,28 +2,23 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Player } from 'src/app/model/player';
 import { HttpService } from '../http.service';
-import { map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
+import { Id } from 'src/app/model/id';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlayerService {
-  players: Observable<Player[]>;
 
   constructor(private httpService: HttpService) {
     this.getAll();
   }
 
   getAll(): Observable<Player[]> {
-    this.players = this.httpService.get<Player[]>('/players');
-    return this.players;
+    return this.httpService.get<Player[]>('/players');
   }
-  getBy(slug: string): Observable<Player> {
-    return this.players.pipe(
-      map(c => c.find(a => a.slug == slug))
-    );
-  }
-  add(player: Player) {
-    return this.httpService.post<string>('/players', player);
+
+  add(player: Player): Observable<Id> {
+    return this.httpService.post<Id>('/players', player);
   }
 }
