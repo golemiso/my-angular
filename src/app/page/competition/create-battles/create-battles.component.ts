@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CompetitionContext } from '../competition.component';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Battle, Competitors, Mode, RankBy } from 'src/app/model/battle';
+import { Battle, Competitors, Mode, GroupingPattern } from 'src/app/model/battle';
 import { BattleService } from 'src/app/service/battle/battle.service';
+import { SettingService } from 'src/app/service/setting/setting.service';
 
 @Component({
   selector: 'app-create-battles',
@@ -11,7 +12,7 @@ import { BattleService } from 'src/app/service/battle/battle.service';
 })
 export class CreateBattlesComponent implements OnInit {
   modes: Mode[];
-  rankBy: RankBy[] = [{ value: 'mode_scores' }, { value: 'entire_scores' }]
+  mode: Mode;
   competitors: Competitors[];
   tempCompetitors: Competitors[];
   battles: Battle[] = [];
@@ -19,12 +20,15 @@ export class CreateBattlesComponent implements OnInit {
 
   constructor(
     private context: CompetitionContext,
-    private battleService: BattleService) { }
+    private battleService: BattleService,
+    private settingService: SettingService) {
+    this.settingService.getModes(this.context.competition).subscribe(m => this.modes = m);
+  }
 
   ngOnInit() { }
 
-  fetchNewGroups(mode: Mode, rankBy: RankBy) {
-    this.battleService.getNewGroups(this.context.competition, mode, rankBy).subscribe(c => this.competitors = c);
+  fetchNewGroups(mode: Mode, groupingPattern: GroupingPattern) {
+    this.battleService.getNewGroups(this.context.competition, mode, groupingPattern).subscribe(c => this.competitors = c);
   }
 
   onPlayerDrop(event: CdkDragDrop<string[]>) {

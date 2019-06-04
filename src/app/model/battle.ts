@@ -27,6 +27,13 @@ export class Mode {
     name: string;
 }
 
-export class RankBy {
-    value: string;
+export class GroupingPattern {
+    id: string;
+    name: string;
+    groups: Group[];
+    rankBy: string;
+}
+
+export class Group {
+    memberRankings: number[];
 }

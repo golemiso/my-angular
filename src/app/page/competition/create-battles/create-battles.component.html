@@ -1,5 +1,14 @@
 <mat-horizontal-stepper [linear]>
   <mat-step label="Arrange teams">
+    <mat-form-field>
+      <mat-label>Rule</mat-label>
+      <mat-select [(ngModel)]="mode" name="mode">
+        <mat-option *ngFor="let mode of modes" [value]="mode.id">
+          {{mode.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="fetchNewGroups(mode)">OK</button>
     <div fxLayout="row wrap" fxLayoutAlign="start" cdkDropListGroup>
       <mat-card fxFlex="200px" *ngFor="let competitor of competitors">
         <mat-card-title style="font-family: 'Splatfont';">
