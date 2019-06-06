@@ -18,10 +18,10 @@ export class BattleService {
   }
 
   getNewGroups(competition: Competition, mode: Mode, groupingPattern: GroupingPattern): Observable<Competitors[]> {
-    const params = this.httpService.createParams({
-      mode: mode.id,
-      groupingPattern: groupingPattern ? groupingPattern.id : null
-    });
+    let hash: { [key: string]: string; } = {};
+    hash['mode'] = mode.id;
+    if (groupingPattern) { hash['groupingPattern'] = groupingPattern.id; }
+    const params = this.httpService.createParams(hash);
     return this.httpService.get<Competitors[]>(`/competitions/${competition.id}/battles/new-groups`, params);
   }
 
