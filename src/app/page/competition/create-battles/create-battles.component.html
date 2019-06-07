@@ -2,23 +2,30 @@
   <mat-step label="Arrange teams">
     <mat-form-field>
       <mat-label>Rule</mat-label>
-      <mat-select [(ngModel)]="mode" name="mode">
+      <mat-select #modeSelect [(ngModel)]="mode" required>
         <mat-option *ngFor="let mode of modes" [value]="mode">
           {{mode.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-flat-button color="primary" (click)="fetchNewGroups(mode)">OK</button>
+    <mat-form-field>
+      <mat-label>Rank By</mat-label>
+      <mat-select matNativeControl #groupingPatternSelect required>
+        <mat-option value="">Random</mat-option>
+        <mat-option *ngFor="let groupingPattern of groupingPatterns" [value]="groupingPattern">
+          {{groupingPattern.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="fetchNewGroups(modeSelect.value, groupingPatternSelect.value)"
+      [(disabled)]="!modeSelect.value && !modeSelect.value">OK</button>
     <div fxLayout="row wrap" fxLayoutAlign="start" cdkDropListGroup>
       <mat-card fxFlex="200px" *ngFor="let competitor of competitors">
-        <mat-card-title style="font-family: 'Splatfont';">
-          <mat-icon>drag_handle</mat-icon>
-        </mat-card-title>
         <mat-card-content>
           <mat-list style="padding-top: 0;" cdkDropList [cdkDropListData]="competitor.players"
             (cdkDropListDropped)="onPlayerDrop($event)">
             <mat-list-item *ngFor="let player of competitor.players" style="font-family: 'Splatfont 2';" cdkDrag>
-              <mat-icon cdkDragHandle>drag_handle</mat-icon>{{ player.name }}
+              <mat-icon>drag_handle</mat-icon>{{ player.name }}
             </mat-list-item>
           </mat-list>
         </mat-card-content>
@@ -30,14 +37,14 @@
   </mat-step>
   <mat-step label="Arrange battles">
     <div fxLayout="row wrap" fxLayoutAlign="start">
-      <mat-card fxFlex="200px" *ngFor="let team of teams" cdkDropList [cdkDropListConnectedTo]="[dropHere]"
-        [cdkDragData]="team" cdkDrag>
+      <mat-card fxFlex="200px" *ngFor="let competitor of competitors" cdkDropList [cdkDropListConnectedTo]="[dropHere]"
+        [cdkDragData]="competitor" cdkDrag>
         <mat-card-title style="font-family: 'Splatfont';">
-          <mat-icon>drag_handle</mat-icon>{{ team.name }}
+          <mat-icon>drag_handle</mat-icon>
         </mat-card-title>
         <mat-card-content>
           <mat-list style="padding-top: 0;">
-            <mat-list-item *ngFor="let player of team.players" style="font-family: 'Splatfont 2';">
+            <mat-list-item *ngFor="let player of competitor.players" style="font-family: 'Splatfont 2';">
               {{ player.name }}
             </mat-list-item>
           </mat-list>

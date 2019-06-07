@@ -1,6 +1,8 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
-import { Battle } from 'src/app/model/battle';
+import { Battle, Result } from 'src/app/model/battle';
 import { BattleService } from 'src/app/service/battle/battle.service';
+import { CompetitionContext } from 'src/app/page/competition/competition.component';
+import { SettingService } from 'src/app/service/setting/setting.service';
 
 @Component({
   selector: 'app-battle',
@@ -12,25 +14,24 @@ export class BattleComponent implements OnInit {
   @Input() resultMode: boolean;
   @Output() deleteBattleRequest = new EventEmitter<Battle>();
   editable: boolean;
+  results: Result[];
 
-  constructor(private service: BattleService) { }
+  constructor(private context: CompetitionContext, private service: BattleService, settingService: SettingService) {
+    settingService.getResults(this.context.competition).subscribe(r => this.results = r);
+  }
 
   ngOnInit() {
     if (!this.resultMode) {
       this.editable = true;
       return;
     }
-    if (!this.battle.result) {
+    if (!this.battle.competitors[0].result) {
       this.editable = true;
     }
   }
 
-  onResultChange(result: string) {
-    this.battle.result = result;
-
-    window.alert(result);
-    this.ngOnInit();
-    this.service.changeResult(this.battle).subscribe();
+  onResultChange(competitorId: string, resultId: string) {
+    this.battle.competitors.find(c => c.id == competitorId).result = resultId;
   }
 
   editButton() {
@@ -44,7 +45,7 @@ export class BattleComponent implements OnInit {
     this.editable = false;
   }
   okButton() {
-    // this.service.change(this.battle).subscribe();
+    this.service.changeResult(this.context.competition, this.battle).subscribe();
     this.editable = false;
   }
 }

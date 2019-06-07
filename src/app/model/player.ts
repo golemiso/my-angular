@@ -4,7 +4,11 @@ export class Player {
     name: string;
 }
 
+export class PlayerRankings {
+    totalRanking: PlayerRanking[];
+}
+
 export class PlayerRanking {
-    rank: number;
     player: Player;
+    ranking: number;
 }

@@ -20,6 +20,7 @@ import {
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   exports: [
@@ -41,7 +42,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatNativeDateModule,
     MatGridListModule,
     MatTabsModule,
-    DragDropModule
+    DragDropModule,
+    FlexLayoutModule
   ],
   providers: [,
     MatDatepickerModule

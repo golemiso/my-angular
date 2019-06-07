@@ -11,10 +11,11 @@ import { SettingService } from 'src/app/service/setting/setting.service';
   styleUrls: ['./create-battles.component.scss']
 })
 export class CreateBattlesComponent implements OnInit {
-  modes: Mode[];
   mode: Mode;
+  modes: Mode[];
+  groupingPatterns: GroupingPattern[];
   competitors: Competitors[];
-  tempCompetitors: Competitors[];
+  tempCompetitors: Competitors[] = [];
   battles: Battle[] = [];
 
 
@@ -23,6 +24,7 @@ export class CreateBattlesComponent implements OnInit {
     private battleService: BattleService,
     private settingService: SettingService) {
     this.settingService.getModes(this.context.competition).subscribe(m => this.modes = m);
+    this.settingService.getGroupingPatterns(this.context.competition).subscribe(g => this.groupingPatterns = g);
   }
 
   ngOnInit() { }
@@ -47,6 +49,7 @@ export class CreateBattlesComponent implements OnInit {
 
     if (this.tempCompetitors.length === 2) {
       const battle = new Battle;
+      battle.mode = this.mode;
       battle.competitors = this.tempCompetitors;
       this.battles.push(battle);
       this.tempCompetitors = [];
@@ -54,6 +57,8 @@ export class CreateBattlesComponent implements OnInit {
   }
 
   addBattles(e: Event) {
-    this.battles.forEach(battle => this.battleService.add(battle).subscribe(battleId => battle.id = battleId));
+    this.battles.forEach(battle => this.battleService.add(this.context.competition, battle).subscribe(b => battle.id = b.id));
+    this.battles = [];
+    this.tempCompetitors = [];
   }
 }

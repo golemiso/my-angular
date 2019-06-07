@@ -4,9 +4,14 @@ import { Player } from './player';
 
 export class Battle {
     id: string;
-    mode: string;
+    mode: Mode;
     competitors: Competitors[];
     result: string;
+}
+
+export class BattleResults {
+    id: string;
+    results: Competitors[];
 }
 
 export class Competitors {

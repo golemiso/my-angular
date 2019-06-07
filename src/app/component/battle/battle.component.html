@@ -1,29 +1,45 @@
 <mat-card class="mat-card--battle">
   <mat-card-content>
     <form>
-      <app-modes [(mode)]="battle.mode" [editable]="editable"></app-modes>
+      <mat-form-field>
+        <input matInput placeholder="Mode" disabled [value]="battle.mode.name">
+      </mat-form-field>
       <div fxLayout="row wrap" fxLayoutAlign="start">
         <label fxFlex="200px">
-          <input *ngIf="resultMode" type="radio" value="victory_left" name="victor" [ngModel]="battle.result"
-            (ngModelChange)="onResultChange($event)" [disabled]="!editable">
+          <mat-form-field *ngIf="resultMode">
+            <mat-label>Result</mat-label>
+            <mat-select #resultSelect0 [disabled]="!editable" [value]="battle.competitors[0].result"
+              (selectionChange)="onResultChange(battle.competitors[0].id, resultSelect0.value)">
+              <mat-option *ngFor="let result of results" [value]="result.id">
+                {{result.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
           <mat-card>
             <mat-card-title style="font-family: 'Splatfont';">
               {{ battle.result }}
             </mat-card-title>
             <mat-list style="padding-top: 0;">
-              <app-player *ngFor="let player of battle.competitors.left.players" [player]="player"></app-player>
+              <app-player *ngFor="let player of battle.competitors[0].players" [player]="player"></app-player>
             </mat-list>
           </mat-card>
         </label>
         <label fxFlex="200px">
-          <input *ngIf="resultMode" type="radio" value="victory_right" name="victor" [ngModel]="battle.result"
-            (ngModelChange)="onResultChange($event)" [disabled]="!editable">
+          <mat-form-field *ngIf="resultMode">
+            <mat-label>Result</mat-label>
+            <mat-select #resultSelect1 [disabled]="!editable" [value]="battle.competitors[1].result"
+              (selectionChange)="onResultChange(battle.competitors[1].id, resultSelect1.value)">
+              <mat-option *ngFor="let result of results" [value]="result.id">
+                {{result.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
           <mat-card>
             <mat-card-title style="font-family: 'Splatfont';">
               {{ battle.result }}
             </mat-card-title>
             <mat-list style="padding-top: 0;">
-              <app-player *ngFor="let player of battle.competitors.right.players" [player]="player"></app-player>
+              <app-player *ngFor="let player of battle.competitors[1].players" [player]="player"></app-player>
             </mat-list>
           </mat-card>
         </label>
