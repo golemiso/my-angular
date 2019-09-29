@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../http.service';
-import { PlayerRanking } from 'src/app/model/player';
+import { PlayerRankings } from 'src/app/model/player';
 import { Competition } from 'src/app/model/competition';
 import { Observable } from 'rxjs';
 
@@ -11,7 +11,7 @@ export class PlayerRankingsService {
 
   constructor(private httpService: HttpService) { }
 
-  getBy(competition: Competition): Observable<PlayerRanking[]> {
-    return this.httpService.get<PlayerRanking[]>(`/competitions/${competition.id}/rankings`);
+  getBy(competition: Competition): Observable<PlayerRankings> {
+    return this.httpService.get<PlayerRankings>(`/competitions/${competition.id}/rankings`);
   }
 }

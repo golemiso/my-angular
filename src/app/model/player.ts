@@ -11,4 +11,5 @@ export class PlayerRankings {
 export class PlayerRanking {
     player: Player;
     ranking: number;
+    score: number;
 }

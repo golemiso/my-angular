@@ -16,7 +16,8 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatGridListModule,
-  MatTabsModule
+  MatTabsModule,
+  MatTableModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -43,7 +44,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatGridListModule,
     MatTabsModule,
     DragDropModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatTableModule
   ],
   providers: [,
     MatDatepickerModule
